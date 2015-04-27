@@ -23,10 +23,8 @@
 #include "command.h"
 #include "progressbar.h"
 #include "datatype.h"
-#include "image/buffer.h"
-#include "image/voxel.h"
-#include "image/stride.h"
-#include "image/threaded_loop.h"
+#include "image.h"
+#include "algo/threaded_loop.h"
 #include "math/rng.h"
 
 
@@ -43,7 +41,7 @@ void usage ()
   + Argument ("data", "the output image.").type_image_out ();
 
   OPTIONS
-    + Image::Stride::StrideOption
+    + Stride::Options
     + DataType::options();
 }
 
@@ -51,24 +49,23 @@ void usage ()
 void run ()
 {
   std::vector<int> dim = argument[0];
-  Image::Header header;
+  Header header;
 
   header.set_ndim (dim.size());
   for (size_t n = 0; n < dim.size(); ++n) {
-    header.dim(n) = dim[n];
-    header.vox(n) = 1.0f;
+    header.size(n) = dim[n];
+    header.voxsize(n) = 1.0f;
   }
   header.datatype() = DataType::from_command_line (DataType::Float32);
-  Image::Stride::set_from_command_line (header, Image::Stride::contiguous_along_spatial_axes (header));
+  Stride::set_from_command_line (header, Stride::contiguous_along_spatial_axes (header));
 
-  Image::Buffer<float> buffer (argument[1], header);
-  auto vox = buffer.voxel();
+  auto image = Header::create (argument[1], header).get_image<float>();
 
   struct fill {
     Math::RNG rng;
     std::normal_distribution<float> normal;
-    void operator() (decltype(vox)& v) { v.value() = normal(rng); }
+    void operator() (decltype(image)& v) { v.value() = normal(rng); }
   };
-  Image::ThreadedLoop ("generating random data...", vox).run (fill(), vox);
+  ThreadedLoop ("generating random data...", image).run (fill(), image);
 }
 
