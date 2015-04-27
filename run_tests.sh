@@ -3,17 +3,21 @@
 LOGFILE=testing.log
 echo logging to \""$LOGFILE"\" 
 
-echo -n "ensuring build is up to date... "
-mrtrix3_folder=$(dirname $(readlink build))
-( 
-  cd $mrtrix3_folder
-  ./build
-) > testing.log 2>&1 
-if [ $? != 0 ]; then 
-  echo ERROR!
-  exit 1
-else
-  echo OK
+if [ x$1 != 'x-nobuild' ]; then 
+  
+  echo -n "ensuring MRtrix3 is up to date... "
+  mrtrix3_folder=$(dirname $(readlink build))
+  ( 
+    cd $mrtrix3_folder
+    ./build
+  ) > testing.log 2>&1 
+  if [ $? != 0 ]; then 
+    echo ERROR!
+    exit 1
+  else
+    echo OK
+  fi
+  
 fi
 
 echo -n "building testing commands... "
