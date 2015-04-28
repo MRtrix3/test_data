@@ -24,8 +24,9 @@
 #include "command.h"
 #include "progressbar.h"
 #include "datatype.h"
-#include "image.h"
-#include "algo/threaded_loop.h"
+#include "image/buffer.h"
+#include "image/voxel.h"
+#include "image/threaded_loop.h"
 
 
 using namespace MR;
@@ -45,16 +46,16 @@ void usage ()
 
 void run ()
 {
-  auto in1 = Header::open (argument[0]).get_image<cdouble>();
-  auto in2 = Header::open (argument[1]).get_image<cdouble>();
-  check_dimensions (in1, in2);
+  Image::Buffer<cdouble> buffer1 (argument[0]);
+  Image::Buffer<cdouble> buffer2 (argument[1]);
+  Image::check_dimensions (buffer1, buffer2);
   double tol = argument[2];
 
-  ThreadedLoop (in1)
-    .run ([&tol] (const decltype(in1)& a, const decltype(in2)& b) {
+  Image::ThreadedLoop (buffer1)
+    .run ([&tol] (const decltype(buffer1.voxel())& a, const decltype(buffer2.voxel())& b) {
        if (std::abs (a.value() - b.value()) > tol)
          throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol));
-     }, in1, in2);
+     }, buffer1.voxel(), buffer2.voxel());
   CONSOLE ("data checked OK");
 }
 
