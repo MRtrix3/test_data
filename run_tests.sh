@@ -3,7 +3,7 @@
 LOGFILE=testing.log
 echo logging to \""$LOGFILE"\" 
 
-mrtrix3_folder=$(dirname $(readlink build))
+mrtrix3_folder=$(dirname $(readlink -f build))
 echo MRtrix3 location: $mrtrix3_folder
 cat > $LOGFILE <<EOD
 -------------------------------------------
