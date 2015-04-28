@@ -5,11 +5,25 @@ echo logging to \""$LOGFILE"\"
 
 mrtrix3_folder=$(dirname $(readlink build))
 echo MRtrix3 location: $mrtrix3_folder
-echo MRtrix3 location: $mrtrix3_folder > $LOGFILE
+cat > $LOGFILE <<EOD
+-------------------------------------------
+  Testing MRtrix3 installation
+-------------------------------------------
+
+  testing folder: $(pwd)
+  MRtrix3 folder: ${mrtrix3_folder}
+EOD
 
 if [ x$1 != 'x-nobuild' ]; then 
   
   echo -n "ensuring MRtrix3 is up to date... "
+  cat >> $LOGFILE <<EOD
+
+-------------------------------------------
+
+## building MRtrix3 (from $mrtrix3_folder)
+
+EOD
   ( 
     cd $mrtrix3_folder
     ./build
@@ -24,6 +38,13 @@ if [ x$1 != 'x-nobuild' ]; then
 fi
 
 echo -n "building testing commands... "
+cat >> $LOGFILE <<EOD
+
+-------------------------------------------
+
+## building test commands... 
+
+EOD
 ./build >> $LOGFILE 2>&1
 if [ $? != 0 ]; then 
   echo ERROR!
@@ -32,23 +53,24 @@ else
   echo OK
 fi
 
-for n in testing/*; do
-  if [ -d $n ]; then continue; fi
+for n in tests/*; do
   script=$(basename $n)
-  rm -f testing/data/tmp.*
+  rm -f data/tmp.*
 
   cat >> $LOGFILE <<EOD
-###########################################
-  running ${script}...
-###########################################
+-------------------------------------------
+
+## running ${script}...
+
 EOD
 
   echo -n "running ${script}... "
   ( 
-    set -ex
     export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
-    cd testing/data/
-    source ../$script
+    cd data/
+    echo PATH is set to $PATH
+    set -ex
+    source ../tests/$script
   ) > .__tmp.log 2>&1
   error=$?
 
@@ -57,17 +79,17 @@ EOD
   if [ $error != 0 ]; then 
     echo ERROR! 
     cat >> $LOGFILE <<EOD
-##########################################
-  ERROR!
-##########################################
+
+## ERROR!
+
 EOD
     exit 1
   else 
     echo OK
     cat >> $LOGFILE <<EOD
-##########################################
-  completed OK
-##########################################
+
+## completed OK
+
 EOD
 
   fi
