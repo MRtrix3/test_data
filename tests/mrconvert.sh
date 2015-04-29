@@ -8,4 +8,4 @@ mrconvert mrconvert/in.mif tmp.nii  && testing_diff_data tmp.nii mrconvert/in.mi
 mrconvert mrconvert/in.mif -datatype float32 tmp.nii.gz  && testing_diff_data tmp.nii.gz mrconvert/in.mif 0
 mrconvert mrconvert/in.mif -stride 3,2,1 tmp.mgh  && testing_diff_data tmp.mgh mrconvert/in.mif 0
 mrconvert mrconvert/in.mif -stride 1,3,2 -datatype int16 tmp.mgz  && testing_diff_data tmp.mgz mrconvert/in.mif 0
-
+mrconvert dwi.mif tmp-[].mif; testing_diff_data dwi.mif tmp-[].mif 0
