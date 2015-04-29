@@ -55,7 +55,6 @@ fi
 
 for n in tests/*; do
   script=$(basename $n)
-  rm -f data/tmp.*
 
   cat >> $LOGFILE <<EOD
 -------------------------------------------
@@ -65,6 +64,7 @@ for n in tests/*; do
 EOD
 
   echo -n "running ${script}... "
+  rm -f data/tmp*
   ( 
     export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
     cd data/
