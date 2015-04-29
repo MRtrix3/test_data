@@ -24,9 +24,19 @@
 #include "command.h"
 #include "progressbar.h"
 #include "datatype.h"
-#include "image/buffer.h"
-#include "image/voxel.h"
-#include "image/threaded_loop.h"
+
+#ifdef MRTRIX_UPDATED_API
+ 
+# include "image.h"
+# include "algo/threaded_loop.h"
+ 
+#else
+ 
+# include "image/buffer.h"
+# include "image/voxel.h"
+# include "image/threaded_loop.h"
+ 
+#endif
 
 
 using namespace MR;
@@ -46,6 +56,21 @@ void usage ()
 
 void run ()
 {
+#ifdef MRTRIX_UPDATED_API
+
+  auto in1 = Header::open (argument[0]).get_image<cdouble>();
+  auto in2 = Header::open (argument[1]).get_image<cdouble>();
+  check_dimensions (in1, in2);
+  double tol = argument[2];
+
+  ThreadedLoop (in1)
+    .run ([&tol] (const decltype(in1)& a, const decltype(in2)& b) {
+        if (std::abs (a.value() - b.value()) > tol)
+        throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol));
+        }, in1, in2);
+
+#else
+
   Image::Buffer<cdouble> buffer1 (argument[0]);
   Image::Buffer<cdouble> buffer2 (argument[1]);
   Image::check_dimensions (buffer1, buffer2);
@@ -56,6 +81,9 @@ void run ()
        if (std::abs (a.value() - b.value()) > tol)
          throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol));
      }, buffer1.voxel(), buffer2.voxel());
+
+#endif
+
   CONSOLE ("data checked OK");
 }
 
