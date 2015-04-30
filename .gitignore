@@ -1,7 +1,7 @@
 .__tmp.log
 build
 testing.log
-/data/tmp.*
+/data/tmp*
 *.o
 *_moc.cpp
 *.so
