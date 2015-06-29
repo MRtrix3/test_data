@@ -30,17 +30,24 @@ else
   echo OK
 fi
 
-for n in tests/*; do
-  script=$(basename $n)
+if [ $# == 0 ]; then
+  for n in tests/*; do
+    tests="$tests $(basename $n)"
+  done
+else
+  tests="$@"
+fi
+
+for script in $tests; do
 
   cat >> $LOGFILE <<EOD
 -------------------------------------------
 
-## running ${script}...
+## running "${script}"...
 
 EOD
 
-  echo -n "running ${script}... "
+  echo -n 'running "'${script}'"... '
   rm -f data/tmp*
   ( 
     export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
