@@ -14,29 +14,6 @@ cat > $LOGFILE <<EOD
   MRtrix3 folder: ${mrtrix3_folder}
 EOD
 
-if [ x$1 != 'x-nobuild' ]; then 
-  
-  echo -n "ensuring MRtrix3 is up to date... "
-  cat >> $LOGFILE <<EOD
-
--------------------------------------------
-
-## building MRtrix3 (from $mrtrix3_folder)
-
-EOD
-  ( 
-    cd $mrtrix3_folder
-    ./build
-  ) >> $LOGFILE 2>&1 
-  if [ $? != 0 ]; then 
-    echo ERROR!
-    exit 1
-  else
-    echo OK
-  fi
-  
-fi
-
 echo -n "building testing commands... "
 cat >> $LOGFILE <<EOD
 
