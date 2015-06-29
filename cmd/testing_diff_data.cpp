@@ -48,8 +48,8 @@ void usage ()
   + "compare two images for differences, within specified tolerance.";
 
   ARGUMENTS
-  + Argument ("data1", "the output image.").type_image_in ()
-  + Argument ("data2", "the output image.").type_image_in ()
+  + Argument ("data1", "an image.").type_image_in ()
+  + Argument ("data2", "another image.").type_image_in ()
   + Argument ("tolerance", "the amount of signal difference to consider acceptable").type_float (0.0, 0.0);
 }
 
