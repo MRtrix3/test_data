@@ -73,7 +73,7 @@ void run ()
   header.set_ndim (dim.size());
   for (size_t n = 0; n < dim.size(); ++n) {
     header.size(n) = dim[n];
-    header.voxsize(n) = 1.0f;
+    header.spacing(n) = 1.0f;
   }
   header.datatype() = DataType::from_command_line (DataType::Float32);
   Stride::set_from_command_line (header, Stride::contiguous_along_spatial_axes (header));

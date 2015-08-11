@@ -58,15 +58,16 @@ void run ()
 {
 #ifdef MRTRIX_UPDATED_API
 
-  auto in1 = Header::open (argument[0]).get_image<cdouble>();
-  auto in2 = Header::open (argument[1]).get_image<cdouble>();
+  auto in1 = Image<cdouble>::open (argument[0]);
+  auto in2 = Image<cdouble>::open (argument[1]);
   check_dimensions (in1, in2);
   double tol = argument[2];
 
   ThreadedLoop (in1)
     .run ([&tol] (const decltype(in1)& a, const decltype(in2)& b) {
         if (std::abs (a.value() - b.value()) > tol)
-        throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol));
+        throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol)
+             + " (" + str(cdouble (a.value())) + " vs " + str(cdouble (b.value())) + ")");
         }, in1, in2);
 
 #else
@@ -79,7 +80,8 @@ void run ()
   Image::ThreadedLoop (buffer1)
     .run ([&tol] (const decltype(buffer1.voxel())& a, const decltype(buffer2.voxel())& b) {
        if (std::abs (a.value() - b.value()) > tol)
-         throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol));
+         throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match within specified precision of " + str(tol) 
+             + " (" + str(cdouble (a.value())) + " vs " + str(cdouble (b.value())) + ")");
      }, buffer1.voxel(), buffer2.voxel());
 
 #endif
