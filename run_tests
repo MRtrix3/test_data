@@ -38,6 +38,8 @@ else
   tests="$@"
 fi
 
+a_script_has_failed=false
+
 for script in $tests; do
 
   cat >> $LOGFILE <<EOD
@@ -67,7 +69,7 @@ EOD
 ## ERROR!
 
 EOD
-    exit 1
+    a_script_has_failed=true
   else 
     echo OK
     cat >> $LOGFILE <<EOD
@@ -78,5 +80,10 @@ EOD
 
   fi
 done
+
+if [ ${a_script_has_failed} = true ]; 
+then
+  exit 1
+fi
 
 
