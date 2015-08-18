@@ -40,6 +40,8 @@ fi
 
 a_script_has_failed=false
 
+echo PATH is set to $PATH >> $LOGFILE
+
 for script in $tests; do
 
   cat >> $LOGFILE <<EOD
@@ -51,34 +53,44 @@ EOD
 
   echo -n 'running "'${script}'"... '
   rm -f data/tmp*
-  ( 
-    export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
-    cd data/
-    echo PATH is set to $PATH
-    set -ex
-    source ../tests/$script
-  ) > .__tmp.log 2>&1
-  error=$?
+  ((ntests=0))
+  ((success=0))
+  while IFS='' read -r cmd || [[ -n "$cmd" ]]; do
+    echo -n '# command: '$cmd >> $LOGFILE 
+    (
+      export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
+      cd data/
+      eval $cmd
+      ) > .__tmp.log 2>&1 
 
+      if [[ $? -ne 0 ]]; then 
+        echo " [ ERROR ]" >> $LOGFILE
+      else 
+        echo " [ ok ]" >> $LOGFILE
+        ((success++)); 
+      fi
+    cat .__tmp.log >> $LOGFILE
+    echo "" >> $LOGFILE
+    ((ntests++))
+  done < tests/$script
 
-  cat .__tmp.log >> $LOGFILE
-  if [ $error != 0 ]; then 
-    echo ERROR! 
+  echo -n $success of $ntests passed
+  if [[ $success -lt $ntests ]]; then
+    echo "    <-------- ERROR"
+    a_script_has_failed=true 
     cat >> $LOGFILE <<EOD
 
-## ERROR!
+## ERROR: $(($ntests-$success)) tests failed for "${script}"
 
 EOD
-    a_script_has_failed=true
-  else 
-    echo OK
+  else
+    echo ""
     cat >> $LOGFILE <<EOD
-
-## completed OK
+## $ntests tests completed OK for "${script}"
 
 EOD
-
   fi
+
 done
 
 if [ ${a_script_has_failed} = true ]; 
