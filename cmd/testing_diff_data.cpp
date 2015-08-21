@@ -61,6 +61,21 @@ void run ()
   auto in1 = Image<cdouble>::open (argument[0]);
   auto in2 = Image<cdouble>::open (argument[1]);
   check_dimensions (in1, in2);
+  for (size_t i = 0; i < in1.ndim(); ++i) {
+    if (std::isfinite (in1.size(i)))
+      if (in1.size(i) != in2.size(i))
+        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching voxel spacings " +
+                                       str(in1.size(i)) + " vs " + str(in2.size(i)));
+  }
+  for (size_t i  = 0; i < 4; ++i) {
+    for (size_t j  = 0; j < 4; ++j) {
+      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
+        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
+                           + "\n" + str(in1.transform().matrix()) + "vs \n " + str(in2.transform().matrix()) + ")");
+    }
+  }
+
+
   double tol = argument[2];
 
   ThreadedLoop (in1)
@@ -75,6 +90,20 @@ void run ()
   Image::Buffer<cdouble> buffer1 (argument[0]);
   Image::Buffer<cdouble> buffer2 (argument[1]);
   Image::check_dimensions (buffer1, buffer2);
+  for (size_t i = 0; i < buffer1.ndim(); ++i) {
+    if (std::isfinite (buffer1.vox(i)))
+      if (buffer1.vox(i) != buffer2.vox(i))
+        throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching voxel spacings " +
+                                       str(buffer1.vox(i)) + " vs " + str(buffer2.vox(i)));
+  }
+  for (size_t i  = 0; i < 4; ++i) {
+    for (size_t j  = 0; j < 4; ++j) {
+      if (std::abs (buffer1.transform()(i,j) - buffer2.transform()(i,j)) > 0.0001)
+        throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching header transforms "
+                         + "\n" + str(buffer1.transform()) + "vs \n " + str(buffer2.transform()) + ")");
+    }
+  }
+
   double tol = argument[2];
 
   Image::ThreadedLoop (buffer1)
