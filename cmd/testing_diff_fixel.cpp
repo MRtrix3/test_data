@@ -25,26 +25,28 @@
 #include "progressbar.h"
 #include "datatype.h"
 
+#define MRTRIX_UPDATED_API
 
 #ifdef MRTRIX_UPDATED_API
  
-# include "image.h"
+//# include "sparse/image.h"
+# include "sparse/fixel_metric.h"
 # include "algo/threaded_loop.h"
-
+using MR::Sparse::FixelMetric;
 #else
-#include "image/buffer.h"
-#include "image/buffer_sparse.h"
-#include "image/voxel.h"
-#include "image/threaded_loop.h"
-#include "image/sparse/fixel_metric.h"
-#include "image/sparse/voxel.h"
- 
+# include "image/buffer.h"
+# include "image/buffer_sparse.h"
+# include "image/voxel.h"
+# include "image/threaded_loop.h"
+# include "image/sparse/fixel_metric.h"
+# include "image/sparse/voxel.h"
+using Image::Sparse::FixelMetric;
 #endif
 
 
 using namespace MR;
 using namespace App;
-using Image::Sparse::FixelMetric;
+
 
 void usage ()
 {
@@ -62,25 +64,23 @@ void run ()
 {
 #ifdef MRTRIX_UPDATED_API
 
-  auto in1 = Image<cdouble>::open (argument[0]);
-  auto in2 = Image<cdouble>::open (argument[1]);
-  check_dimensions (in1, in2);
-  for (size_t i = 0; i < in1.ndim(); ++i) {
-    if (std::isfinite (in1.size(i)))
-      if (in1.size(i) != in2.size(i))
-        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching voxel spacings " +
-                                       str(in1.size(i)) + " vs " + str(in2.size(i)));
-  }
-  for (size_t i  = 0; i < 4; ++i) {
-    for (size_t j  = 0; j < 4; ++j) {
-      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
-        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
-                           + "\n" + str(in1.transform().matrix()) + "vs \n " + str(in2.transform().matrix()) + ")");
-    }
-  }
-
-
-  double tol = argument[2];
+//  auto in1 = Image<cdouble>::open (argument[0]);
+//  auto in2 = Image<cdouble>::open (argument[1]);
+//  check_dimensions (in1, in2);
+//  for (size_t i = 0; i < in1.ndim(); ++i) {
+//    if (std::isfinite (in1.size(i)))
+//      if (in1.size(i) != in2.size(i))
+//        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching voxel spacings " +
+//                                       str(in1.size(i)) + " vs " + str(in2.size(i)));
+//  }
+//  for (size_t i  = 0; i < 4; ++i) {
+//    for (size_t j  = 0; j < 4; ++j) {
+//      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
+//        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
+//                           + "\n" + str(in1.transform().matrix()) + "vs \n " + str(in2.transform().matrix()) + ")");
+//    }
+//  }
+//  double tol = argument[2];
 
 
 
