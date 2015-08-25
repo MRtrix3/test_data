@@ -39,13 +39,13 @@ using MR::Sparse::FixelMetric;
 # include "image/threaded_loop.h"
 # include "image/sparse/fixel_metric.h"
 # include "image/sparse/voxel.h"
-using Image::Sparse::FixelMetric;
+
 #endif
 
 
 using namespace MR;
 using namespace App;
-
+using Image::Sparse::FixelMetric;
 
 void usage ()
 {
