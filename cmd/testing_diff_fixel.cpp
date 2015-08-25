@@ -25,7 +25,6 @@
 #include "progressbar.h"
 #include "datatype.h"
 
-#define MRTRIX_UPDATED_API
 
 #ifdef MRTRIX_UPDATED_API
  
