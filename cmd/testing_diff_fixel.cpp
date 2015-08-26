@@ -39,7 +39,7 @@ using MR::Sparse::FixelMetric;
 # include "image/threaded_loop.h"
 # include "image/sparse/fixel_metric.h"
 # include "image/sparse/voxel.h"
-using Image::Sparse::FixelMetric;
+using MR::Image::Sparse::FixelMetric;
 #endif
 
 
