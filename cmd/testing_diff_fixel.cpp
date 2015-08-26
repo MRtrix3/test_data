@@ -26,10 +26,11 @@
 #include "datatype.h"
 
 
-#ifdef MRTRIX_UPDATED_API
- 
-//# include "sparse/image.h"
+#ifdef MRTRIX_UPDATED_API 
+# include "image.h"
+# include "sparse/image.h"
 # include "sparse/fixel_metric.h"
+# include "image_helpers.h"
 # include "algo/threaded_loop.h"
 using MR::Sparse::FixelMetric;
 #else
@@ -62,23 +63,47 @@ void run ()
 {
 #ifdef MRTRIX_UPDATED_API
 
-//  auto in1 = Image<cdouble>::open (argument[0]);
-//  auto in2 = Image<cdouble>::open (argument[1]);
-//  check_dimensions (in1, in2);
-//  for (size_t i = 0; i < in1.ndim(); ++i) {
-//    if (std::isfinite (in1.size(i)))
-//      if (in1.size(i) != in2.size(i))
-//        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching voxel spacings " +
-//                                       str(in1.size(i)) + " vs " + str(in2.size(i)));
-//  }
-//  for (size_t i  = 0; i < 4; ++i) {
-//    for (size_t j  = 0; j < 4; ++j) {
-//      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
-//        throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
-//                           + "\n" + str(in1.transform().matrix()) + "vs \n " + str(in2.transform().matrix()) + ")");
-//    }
-//  }
-//  double tol = argument[2];
+  Sparse::Image<FixelMetric> buffer1 (argument[0]);
+  Sparse::Image<FixelMetric> buffer2 (argument[1]);
+  check_dimensions (buffer1, buffer2);
+  for (size_t i = 0; i < buffer1.ndim(); ++i) {
+    if (std::isfinite (buffer1.spacing(i)))
+      if (buffer1.spacing(i) != buffer2.spacing(i))
+        throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching voxel spacings " +
+                                       str(buffer1.spacing(i)) + " vs " + str(buffer2.spacing(i)));
+  }
+  for (size_t i  = 0; i < 4; ++i) {
+    for (size_t j  = 0; j < 4; ++j) {
+      if (std::abs (buffer1.transform()(i,j) - buffer2.transform()(i,j)) > 0.0001)
+        throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching header transforms "
+                         + "\n" + str(buffer1.transform().matrix()) + "vs \n " + str(buffer2.transform().matrix()) + ")");
+    }
+  }
+
+  double tol = argument[2];
+
+  ThreadedLoop (buffer1)
+    .run ([&tol] (decltype(buffer1)& a, decltype(buffer2)& b) {
+       if (a.value().size() != b.value().size())
+         throw Exception ("the fixel images do not have corresponding fixels in all voxels");
+       // For each fixel
+       for (size_t fixel = 0; fixel != a.value().size(); ++fixel) {
+         // Check value
+         if (std::abs (a.value()[fixel].value - b.value()[fixel].value) > tol)
+           throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel value within specified precision of " + str(tol)
+               + " (" + str(a.value()[fixel].value) + " vs " + str(b.value()[fixel].value) + ")");
+         // Check size
+         if (std::abs (a.value()[fixel].size - b.value()[fixel].size) > tol)
+           throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel size within specified precision of " + str(tol)
+               + " (" + str(a.value()[fixel].size) + " vs " + str(b.value()[fixel].size) + ")");
+         // Check Direction
+         for (size_t dim = 0; dim < 3; ++dim) {
+           if (std::abs (a.value()[fixel].dir[dim] - b.value()[fixel].dir[dim]) > tol)
+             throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel direction within specified precision of " + str(tol)
+                 + " (" + str(a.value()[fixel].dir[dim]) + " vs " + str(b.value()[fixel].dir[dim]) + ")");
+         }
+       }
+     }, buffer1, buffer2);
 
 
 
@@ -113,16 +138,16 @@ void run ()
          // Check value
          if (std::abs (a.value()[fixel].value - b.value()[fixel].value) > tol)
            throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel value within specified precision of " + str(tol)
-               + " (" + str(cdouble (a.value()[fixel].value)) + " vs " + str(cdouble (b.value()[fixel].value)) + ")");
+               + " (" + str(a.value()[fixel].value) + " vs " + str(b.value()[fixel].value) + ")");
          // Check size
          if (std::abs (a.value()[fixel].size - b.value()[fixel].size) > tol)
            throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel size within specified precision of " + str(tol)
-               + " (" + str(cdouble (a.value()[fixel].size)) + " vs " + str(cdouble (b.value()[fixel].size)) + ")");
+               + " (" + str(a.value()[fixel].size) + " vs " + str(b.value()[fixel].size) + ")");
          // Check Direction
          for (size_t dim = 0; dim < 3; ++dim) {
            if (std::abs (a.value()[fixel].dir[dim] - b.value()[fixel].dir[dim]) > tol)
              throw Exception ("images \"" + a.name() + "\" and \"" + b.name() + "\" do not match fixel direction within specified precision of " + str(tol)
-                 + " (" + str(cdouble (a.value()[fixel].dir[dim])) + " vs " + str(cdouble (b.value()[fixel].dir[dim])) + ")");
+                 + " (" + str(a.value()[fixel].dir[dim]) + " vs " + str(b.value()[fixel].dir[dim]) + ")");
          }
        }
      }, buffer1.voxel(), buffer2.voxel());
