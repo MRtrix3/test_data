@@ -11,6 +11,10 @@ regressions.
     
           git clone https://github.com/MRtrix3/testing.git
 
+    or if you have write access:
+
+          git clone git@github.com:MRtrix3/testing.git
+
 - create a symbolic link to the build script in your main MRtrix3 git clone.
   For example, if you cloned the testing repo within your main MRtrix3 folder:
     
@@ -27,13 +31,17 @@ regressions.
 
 ## Adding tests
  
-Add a script to the `tests/` folder. These should return a zero exit code if
-successful.
+Add a script to the `tests/` folder. Each line of these scripts constitutes a
+single test, and will be run as a single unit. Use && and || bash constructs if
+needed to create compound commands. Each of these lines should return a zero
+exit code if successful.
 
 You can add test data to the `data/` folder, preferably within its own
 subfolder if you don't anticipate these data will be suitable for testing other
 commands. You can test the output of your commands against your expected output
-using the `testing_diff_data` data command.
+using the `testing_diff_data` data command. Please keep the size of these data
+small to ensure this repository doesn't grow too large. In general, you really
+don't need large images to verify correct operation...
 
 Note that this script will be invoked directly in the context set up by the
 `run_tests.sh` script, so does not need to be executable, or to set up any
