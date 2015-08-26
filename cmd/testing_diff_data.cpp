@@ -67,7 +67,7 @@ void run ()
         throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching voxel spacings " +
                                        str(in1.size(i)) + " vs " + str(in2.size(i)));
   }
-  for (size_t i  = 0; i < 4; ++i) {
+  for (size_t i  = 0; i < 3; ++i) {
     for (size_t j  = 0; j < 4; ++j) {
       if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
         throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
