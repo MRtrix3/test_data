@@ -28,6 +28,7 @@
 #ifdef MRTRIX_UPDATED_API
 
 #include <Eigen/Dense>
+#include "math/math.h"
  
 #else
  
@@ -58,19 +59,19 @@ void run ()
 
 #ifdef MRTRIX_UPDATED_API
 
-  //Eigen::ArrayXf in1, in2;
-  // TODO Currently no way of importing numeric data into Eigen
+  const Eigen::MatrixXf in1 = load_matrix<float> (argument[0]);
+  const Eigen::MatrixXf in2 = load_matrix<float> (argument[1]);
   
-  //if (in1.rows() != in2.rows() || in1.cols() != in2.cols())
-  //  throw Exception ("matrices \"" + Path::basename (argument[0]) + "\" and \"" + Path::basename (argument[1]) + "\" do not have matching sizes"
+  if (in1.rows() != in2.rows() || in1.cols() != in2.cols())
+    throw Exception ("matrices \"" + Path::basename (argument[0]) + "\" and \"" + Path::basename (argument[1]) + "\" do not have matching sizes"
                      " (" + str(in1.rows()) + "x" + str(in1.cols()) + " vs " + str(in2.rows()) + "x" + str(in2.cols()) + ")");
   
-  //const size_t numel = in1.size();
-  //for (size_t i = 0; i != numel; ++i) {
-  //  if (std::abs (*(in1.data()+i) - *(in2.data()+i)) > tol)
-  //    throw Exception ("matrices \"" + Path::basename (argument[0]) + "\" and \"" + Path::basename (argument[1]) + " do not match within specified precision of " + str(tol)
-  //                     + " (" + str(*(in1.data()+i)) + " vs " + str(*(in2.data()+i)) + ")");
-  //}
+  const size_t numel = in1.size();
+  for (size_t i = 0; i != numel; ++i) {
+    if (std::abs (*(in1.data()+i) - *(in2.data()+i)) > tol)
+      throw Exception ("matrices \"" + Path::basename (argument[0]) + "\" and \"" + Path::basename (argument[1]) + " do not match within specified precision of " + str(tol)
+                       + " (" + str(*(in1.data()+i)) + " vs " + str(*(in2.data()+i)) + ")");
+  }
   
 #else
 
