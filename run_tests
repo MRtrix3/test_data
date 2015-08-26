@@ -58,7 +58,7 @@ EOD
   while IFS='' read -r cmd || [[ -n "$cmd" ]]; do
     echo -n '# command: '$cmd >> $LOGFILE 
     (
-      export PATH="$(pwd)/bin:${mrtrix3_folder}/bin:$PATH"; 
+      export PATH="$(pwd)/release/bin:$(pwd)/bin:${mrtrix3_folder}/release/bin:${mrtrix3_folder}/bin:$PATH"; 
       cd data/
       eval $cmd
       ) > .__tmp.log 2>&1 
