@@ -56,12 +56,13 @@ void run ()
 
   Mesh::Mesh in1 (argument[0]), in2 (argument[1]);
   
-  if (in1.num_vertices() != in2.num_vertices())
-    throw Exception ("Mismatched vertex count - test FAILED");
+  // Can't test this: Some formats have to duplicate the vertex positions
+  //if (in1.num_vertices() != in2.num_vertices())
+  //  throw Exception ("Mismatched vertex count (" + str(in1.num_vertices()) + " - " + str(in2.num_vertices()) + ") - test FAILED");
   if (in1.num_triangles() != in2.num_triangles())
-    throw Exception ("Mismatched triangle count - test FAILED");
+    throw Exception ("Mismatched triangle count (" + str(in1.num_triangles()) + " - " + str(in2.num_triangles()) + ") - test FAILED");
   if (in1.num_quads() != in2.num_quads())
-    throw Exception ("Mismatched quad count - test FAILED");
+    throw Exception ("Mismatched quad count (" + str(in1.num_quads()) + " - " + str(in2.num_quads()) + ") - test FAILED");
     
   // For every triangle and quad in one file, there must be a matching triangle/quad in the other
   // Can't rely on a preserved order; need to look through the entire list for a triangle/quad for
@@ -84,7 +85,8 @@ void run ()
       std::array<Point<float>, 3> v2;
 #endif
       for (size_t axis = 0; axis != 3; ++axis)
-        v2[axis] = in1.vert (in1.tri(i)[axis]);
+        v2[axis] = in2.vert (in2.tri(j)[axis]);
+      bool is_match = true;
       for (size_t a = 0; a != 3; ++a) {
         size_t b = 0;
         for (; b != 3; ++b) {
@@ -97,8 +99,10 @@ void run ()
             
         }
         if (b == 3)
-          throw Exception ("Unmatched vertex - test FAILED");
+          is_match = false;
       }
+      if (is_match)
+        match_found = true;
     }
     if (!match_found)
       throw Exception ("Unmatched triangle - test FAILED");
@@ -120,7 +124,8 @@ void run ()
       std::array<Point<float>, 4> v2;
 #endif
       for (size_t axis = 0; axis != 4; ++axis)
-        v2[axis] = in1.vert (in1.quad(i)[axis]);
+        v2[axis] = in2.vert (in2.quad(j)[axis]);
+      bool is_match = true;
       for (size_t a = 0; a != 4; ++a) {
         size_t b = 0;
         for (; b != 4; ++b) {
@@ -133,8 +138,10 @@ void run ()
             
         }
         if (b == 4)
-          throw Exception ("Unmatched vertex - test FAILED");
+          is_match = false;
       }
+      if (is_match)
+        match_found = true;
     }
     if (!match_found)
       throw Exception ("Unmatched quad - test FAILED");
