@@ -54,8 +54,31 @@ void run ()
   const float dist_sq = Math::pow2 (float(argument[2]));
 #endif
 
-  Mesh::Mesh in1 (argument[0]), in2 (argument[1]);
+  MR::Mesh::MeshMulti multi_in1, multi_in2;
+
+  // Read in the mesh data
+  try {
+    MR::Mesh::Mesh mesh (argument[0]);
+    multi_in1.push_back (mesh);
+  } catch (...) {
+    multi_in1.load (argument[0]);
+  }
   
+  try {
+    MR::Mesh::Mesh mesh (argument[1]);
+    multi_in2.push_back (mesh);
+  } catch (...) {
+    multi_in2.load (argument[1]);
+  }
+  
+  if (multi_in1.size() != multi_in2.size())
+    throw Exception ("Mismatched number of mesh objects (" + str(multi_in1.size()) + " - " + str(multi_in2.size()) + ") - test FAILED");
+  
+  for (size_t mesh_index = 0; mesh_index != multi_in1.size(); ++mesh_index) {
+  
+    const MR::Mesh::Mesh& in1 (multi_in1[mesh_index]);
+    const MR::Mesh::Mesh& in2 (multi_in2[mesh_index]);
+
   // Can't test this: Some formats have to duplicate the vertex positions
   //if (in1.num_vertices() != in2.num_vertices())
   //  throw Exception ("Mismatched vertex count (" + str(in1.num_vertices()) + " - " + str(in2.num_vertices()) + ") - test FAILED");
@@ -64,87 +87,89 @@ void run ()
   if (in1.num_quads() != in2.num_quads())
     throw Exception ("Mismatched quad count (" + str(in1.num_quads()) + " - " + str(in2.num_quads()) + ") - test FAILED");
     
-  // For every triangle and quad in one file, there must be a matching triangle/quad in the other
-  // Can't rely on a preserved order; need to look through the entire list for a triangle/quad for
-  //   which every vertex has a corresponding vertex
+    // For every triangle and quad in one file, there must be a matching triangle/quad in the other
+    // Can't rely on a preserved order; need to look through the entire list for a triangle/quad for
+    //   which every vertex has a corresponding vertex
   
-  for (size_t i = 0; i != in1.num_triangles(); ++i) {
-    // Explicitly load the vertex data
+    for (size_t i = 0; i != in1.num_triangles(); ++i) {
+      // Explicitly load the vertex data
 #ifdef MRTRIX_UPDATED_API  
-    std::array<Eigen::Vector3, 3> v1;
+      std::array<Eigen::Vector3, 3> v1;
 #else 
-    std::array<Point<float>, 3> v1;
-#endif
-    for (size_t axis = 0; axis != 3; ++axis)
-      v1[axis] = in1.vert(in1.tri(i)[axis]);
-    bool match_found = false;
-    for (size_t j = 0; j != in2.num_triangles() && !match_found; ++j) {
-#ifdef MRTRIX_UPDATED_API 
-      std::array<Eigen::Vector3, 3> v2;
-#else 
-      std::array<Point<float>, 3> v2;
+      std::array<Point<float>, 3> v1;
 #endif
       for (size_t axis = 0; axis != 3; ++axis)
-        v2[axis] = in2.vert (in2.tri(j)[axis]);
-      bool is_match = true;
-      for (size_t a = 0; a != 3; ++a) {
-        size_t b = 0;
-        for (; b != 3; ++b) {
-#ifdef MRTRIX_UPDATED_API
-          if ((v1[a]-v2[b]).squaredNorm() < dist_sq)
-#else
-          if (dist2 (v1[a], v2[b]) < dist_sq)
-#endif          
-            break;
-            
-        }
-        if (b == 3)
-          is_match = false;
-      }
-      if (is_match)
-        match_found = true;
-    }
-    if (!match_found)
-      throw Exception ("Unmatched triangle - test FAILED");
-  }
-  
-  for (size_t i = 0; i != in1.num_quads(); ++i) {
-#ifdef MRTRIX_UPDATED_API  
-    std::array<Eigen::Vector3, 4> v1;
-#else 
-    std::array<Point<float>, 4> v1;
-#endif
-    for (size_t axis = 0; axis != 4; ++axis)
-      v1[axis] = in1.vert (in1.quad(i)[axis]);
-    bool match_found = false;
-    for (size_t j = 0; j != in2.num_quads() && !match_found; ++j) {
+        v1[axis] = in1.vert(in1.tri(i)[axis]);
+      bool match_found = false;
+      for (size_t j = 0; j != in2.num_triangles() && !match_found; ++j) {
 #ifdef MRTRIX_UPDATED_API 
-      std::array<Eigen::Vector3, 4> v2;
+        std::array<Eigen::Vector3, 3> v2;
 #else 
-      std::array<Point<float>, 4> v2;
+        std::array<Point<float>, 3> v2;
+#endif
+        for (size_t axis = 0; axis != 3; ++axis)
+          v2[axis] = in2.vert (in2.tri(j)[axis]);
+        bool is_match = true;
+        for (size_t a = 0; a != 3; ++a) {
+          size_t b = 0;
+          for (; b != 3; ++b) {
+#ifdef MRTRIX_UPDATED_API
+            if ((v1[a]-v2[b]).squaredNorm() < dist_sq)
+#else
+            if (dist2 (v1[a], v2[b]) < dist_sq)
+#endif          
+              break;
+            
+          }
+          if (b == 3)
+            is_match = false;
+        }
+        if (is_match)
+          match_found = true;
+      }
+      if (!match_found)
+        throw Exception ("Unmatched triangle - test FAILED");
+    }
+  
+    for (size_t i = 0; i != in1.num_quads(); ++i) {
+#ifdef MRTRIX_UPDATED_API  
+      std::array<Eigen::Vector3, 4> v1;
+#else 
+      std::array<Point<float>, 4> v1;
 #endif
       for (size_t axis = 0; axis != 4; ++axis)
-        v2[axis] = in2.vert (in2.quad(j)[axis]);
-      bool is_match = true;
-      for (size_t a = 0; a != 4; ++a) {
-        size_t b = 0;
-        for (; b != 4; ++b) {
+        v1[axis] = in1.vert (in1.quad(i)[axis]);
+      bool match_found = false;
+      for (size_t j = 0; j != in2.num_quads() && !match_found; ++j) {
+#ifdef MRTRIX_UPDATED_API 
+        std::array<Eigen::Vector3, 4> v2;
+#else 
+        std::array<Point<float>, 4> v2;
+#endif
+        for (size_t axis = 0; axis != 4; ++axis)
+          v2[axis] = in2.vert (in2.quad(j)[axis]);
+        bool is_match = true;
+        for (size_t a = 0; a != 4; ++a) {
+          size_t b = 0;
+          for (; b != 4; ++b) {
 #ifdef MRTRIX_UPDATED_API
-          if ((v1[a]-v2[b]).squaredNorm() < dist_sq)
+            if ((v1[a]-v2[b]).squaredNorm() < dist_sq)
 #else
-          if (dist2 (v1[a], v2[b]) < dist_sq)
+            if (dist2 (v1[a], v2[b]) < dist_sq)
 #endif          
-            break;
+              break;
             
+          }
+          if (b == 4)
+            is_match = false;
         }
-        if (b == 4)
-          is_match = false;
+        if (is_match)
+          match_found = true;
       }
-      if (is_match)
-        match_found = true;
+      if (!match_found)
+        throw Exception ("Unmatched quad - test FAILED");
     }
-    if (!match_found)
-      throw Exception ("Unmatched quad - test FAILED");
+    
   }
 
   CONSOLE ("data checked OK");

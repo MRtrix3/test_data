@@ -1,0 +1,1 @@
+sh2peaks sh2peaks/fod.mif - | testing_diff_data - sh2peaks/out.mif 1e-3
