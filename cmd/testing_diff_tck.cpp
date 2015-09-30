@@ -81,13 +81,8 @@ void run ()
 
   DWI::Tractography::Properties properties1, properties2;
   std::vector<DWI::Tractography::Streamline<>> ref_list;
-#ifdef MRTRIX_UPDATED_API
-  DWI::Tractography::Reader reader1 (argument[0], properties1);
-  DWI::Tractography::Reader reader2 (argument[1], properties2);
-#else
   DWI::Tractography::Reader<> reader1 (argument[0], properties1);
   DWI::Tractography::Reader<> reader2 (argument[1], properties2);
-#endif
 
   DWI::Tractography::Streamline<> tck;
   while (reader2 (tck))
