@@ -98,8 +98,8 @@ void run ()
 #else 
       std::array<Point<float>, 3> v1;
 #endif
-      for (size_t axis = 0; axis != 3; ++axis)
-        v1[axis] = in1.vert(in1.tri(i)[axis]);
+      for (size_t vertex = 0; vertex != 3; ++vertex)
+        v1[vertex] = in1.vert(in1.tri(i)[vertex]);
       bool match_found = false;
       for (size_t j = 0; j != in2.num_triangles() && !match_found; ++j) {
 #ifdef MRTRIX_UPDATED_API 
@@ -107,9 +107,9 @@ void run ()
 #else 
         std::array<Point<float>, 3> v2;
 #endif
-        for (size_t axis = 0; axis != 3; ++axis)
-          v2[axis] = in2.vert (in2.tri(j)[axis]);
-        bool is_match = true;
+        for (size_t vertex = 0; vertex != 3; ++vertex)
+          v2[vertex] = in2.vert (in2.tri(j)[vertex]);
+        bool all_vertices_matched = true;
         for (size_t a = 0; a != 3; ++a) {
           size_t b = 0;
           for (; b != 3; ++b) {
@@ -122,9 +122,9 @@ void run ()
             
           }
           if (b == 3)
-            is_match = false;
+            all_vertices_matched = false;
         }
-        if (is_match)
+        if (all_vertices_matched)
           match_found = true;
       }
       if (!match_found)
@@ -137,8 +137,8 @@ void run ()
 #else 
       std::array<Point<float>, 4> v1;
 #endif
-      for (size_t axis = 0; axis != 4; ++axis)
-        v1[axis] = in1.vert (in1.quad(i)[axis]);
+      for (size_t vertex = 0; vertex != 4; ++vertex)
+        v1[vertex] = in1.vert (in1.quad(i)[vertex]);
       bool match_found = false;
       for (size_t j = 0; j != in2.num_quads() && !match_found; ++j) {
 #ifdef MRTRIX_UPDATED_API 
@@ -146,9 +146,9 @@ void run ()
 #else 
         std::array<Point<float>, 4> v2;
 #endif
-        for (size_t axis = 0; axis != 4; ++axis)
-          v2[axis] = in2.vert (in2.quad(j)[axis]);
-        bool is_match = true;
+        for (size_t vertex = 0; vertex != 4; ++vertex)
+          v2[vertex] = in2.vert (in2.quad(j)[vertex]);
+        bool all_vertices_matched = true;
         for (size_t a = 0; a != 4; ++a) {
           size_t b = 0;
           for (; b != 4; ++b) {
@@ -161,9 +161,9 @@ void run ()
             
           }
           if (b == 4)
-            is_match = false;
+            all_vertices_matched = false;
         }
-        if (is_match)
+        if (all_vertices_matched)
           match_found = true;
       }
       if (!match_found)
