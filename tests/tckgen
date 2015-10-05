@@ -1,4 +1,4 @@
-tckgen SIFT_phantom/dwi.mif -algo seedtest -seed_sphere 0,0,4,4 -number 5000 tmp.tck -force && tckmap tmp.tck -template SIFT_phantom/dwi.mif - | testing_diff_data - tckgen/seed_sphere.mif 60
+tckgen SIFT_phantom/dwi.mif -algo seedtest -seed_sphere 0,0,4,4 -number 50000 tmp.tck -force && tckmap tmp.tck -template SIFT_phantom/dwi.mif - | testing_diff_data - tckgen/seed_sphere.mif 1000
 tckgen SIFT_phantom/dwi.mif -algo seedtest -seed_image SIFT_phantom/mask.mif -number 3888 tmp.tck -force && tckmap tmp.tck -template SIFT_phantom/dwi.mif - | testing_diff_data - tckgen/SIFT_phantom_seeds.mif 26
 tckgen SIFT_phantom/dwi.mif -algo seedtest -seed_random_per_voxel SIFT_phantom/mask.mif 27 tmp.tck -force && tckmap tmp.tck -template SIFT_phantom/dwi.mif - | testing_diff_data - tckgen/SIFT_phantom_seeds.mif 0.5
 tckgen SIFT_phantom/dwi.mif -algo seedtest -seed_grid_per_voxel SIFT_phantom/mask.mif 3 tmp.tck -force && tckmap tmp.tck -template SIFT_phantom/dwi.mif - | testing_diff_data - tckgen/SIFT_phantom_seeds.mif 0.5
