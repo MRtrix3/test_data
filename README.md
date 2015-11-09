@@ -20,9 +20,9 @@ regressions.
     
           ln -s ../build
 
-- run the `./run_tests.sh` script:
+- run the `./run_tests` script:
 
-        ./run_tests.sh
+        ./run_tests
         
     This will build the testing executables, then run the tests. All activities
     are logged to the `testing.log` file - take a look in there for details of any
