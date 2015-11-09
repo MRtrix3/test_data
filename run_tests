@@ -1,9 +1,12 @@
 #!/bin/bash
+# Portable resolution of symlinks http://stackoverflow.com/a/24572274/252589
+# readlink -f does not work on Macs
+readlinkf(){ perl -MCwd -e 'print Cwd::abs_path shift' $1;}
 
 LOGFILE=testing.log
 echo logging to \""$LOGFILE"\" 
 
-mrtrix3_folder=$(dirname $(readlink -f build))
+mrtrix3_folder=$(dirname $(readlinkf build))
 echo MRtrix3 location: $mrtrix3_folder
 cat > $LOGFILE <<EOD
 -------------------------------------------
