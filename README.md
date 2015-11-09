@@ -44,10 +44,10 @@ small to ensure this repository doesn't grow too large. In general, you really
 don't need large images to verify correct operation...
 
 Note that this script will be invoked directly in the context set up by the
-`run_tests.sh` script, so does not need to be executable, or to set up any
+`run_tests` script, so does not need to be executable, or to set up any
 redirection, or to uses a hash-bang line to specify the interpreter.  Just add
 commands to be run, and if any of them produce a non-zero exit code, this will
-be caught by the `run_tests.sh` script.  All commands will also be logged.
+be caught by the `run_tests` script.  All commands will also be logged.
 
 ## Temporary files 
 
