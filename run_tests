@@ -25,7 +25,7 @@ cat >> $LOGFILE <<EOD
 ## building test commands... 
 
 EOD
-./build -disablethreading >> $LOGFILE 2>&1
+./build >> $LOGFILE 2>&1
 if [ $? != 0 ]; then 
   echo ERROR!
   exit 1
