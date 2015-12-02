@@ -29,4 +29,6 @@ icons.cpp
 *.creator.user
 *.files
 *.includes
-
+debug
+assert
+release

@@ -25,7 +25,7 @@
 #include "progressbar.h"
 #include "datatype.h"
 
-
+#define MRTRIX_UPDATED_API
 #ifdef MRTRIX_UPDATED_API 
 # include "image.h"
 # include "sparse/image.h"
@@ -72,7 +72,7 @@ void run ()
         throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching voxel spacings " +
                                        str(buffer1.spacing(i)) + " vs " + str(buffer2.spacing(i)));
   }
-  for (size_t i  = 0; i < 4; ++i) {
+  for (size_t i  = 0; i < 3; ++i) {
     for (size_t j  = 0; j < 4; ++j) {
       if (std::abs (buffer1.transform()(i,j) - buffer2.transform()(i,j)) > 0.0001)
         throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching header transforms "
