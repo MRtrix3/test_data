@@ -69,7 +69,7 @@ void run ()
   }
   for (size_t i  = 0; i < 3; ++i) {
     for (size_t j  = 0; j < 4; ++j) {
-      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.0001)
+      if (std::abs (in1.transform().matrix()(i,j) - in2.transform().matrix()(i,j)) > 0.001)
         throw Exception ("images \"" + in1.name() + "\" and \"" + in2.name() + "\" do not have matching header transforms "
                            + "\n" + str(in1.transform().matrix()) + "vs \n " + str(in2.transform().matrix()) + ")");
     }
@@ -98,7 +98,7 @@ void run ()
   }
   for (size_t i  = 0; i < 4; ++i) {
     for (size_t j  = 0; j < 4; ++j) {
-      if (std::abs (buffer1.transform()(i,j) - buffer2.transform()(i,j)) > 0.0001)
+      if (std::abs (buffer1.transform()(i,j) - buffer2.transform()(i,j)) > 0.001)
         throw Exception ("images \"" + buffer1.name() + "\" and \"" + buffer2.name() + "\" do not have matching header transforms "
                          + "\n" + str(buffer1.transform()) + "vs \n " + str(buffer2.transform()) + ")");
     }
