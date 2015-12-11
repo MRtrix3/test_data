@@ -32,7 +32,7 @@
  
 #else
  
-#include "point.h"
+# include "point.h"
 # include "image/buffer.h"
 # include "image/voxel.h"
 # include "image/threaded_loop.h"

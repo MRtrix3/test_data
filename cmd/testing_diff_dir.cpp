@@ -28,7 +28,7 @@
 
 #ifdef MRTRIX_UPDATED_API
 #else
-#include "math/matrix.h"
+# include "math/matrix.h"
 
 #endif
 
