@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 import sys
-# TODO Different contrasts are now written to different files
-# Script will need to open those files
 FWE = [ ]
 for filepath in [ 'tmpoutfwe_pvalue_c1.csv', 'tmpoutfwe_pvalue_c2.csv', 'tmpoutfwe_pvalue_c3.csv', 'tmpoutfwe_pvalue_F1.csv', 'tmpoutfwe_pvalue_F2.csv' ]:
   with open(filepath, 'r') as f:
