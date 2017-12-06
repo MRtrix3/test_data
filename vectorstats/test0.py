@@ -3,7 +3,7 @@ import sys
 # TODO Different contrasts are now written to different files
 # Script will need to open those files
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_pvalue_0.csv', 'tmpoutfwe_pvalue_1.csv', 'tmpoutfwe_pvalue_2.csv', 'tmpoutfwe_pvalue_3.csv' ]:
+for filepath in [ 'tmpoutfwe_pvalue_c1.csv', 'tmpoutfwe_pvalue_c2.csv', 'tmpoutfwe_pvalue_c3.csv', 'tmpoutfwe_pvalue_F1.csv', 'tmpoutfwe_pvalue_F2.csv' ]:
   with open(filepath, 'r') as f:
     FWE.append([float(value) for value in f.read().split()])
 # First group has effect in row 1, not in rows 2-5
@@ -16,6 +16,7 @@ for filepath in [ 'tmpoutfwe_pvalue_0.csv', 'tmpoutfwe_pvalue_1.csv', 'tmpoutfwe
 effects = [ [ 1, 0, 0, 0, 0 ],
             [ 0, 1, 0, 0, 0 ],
             [ 0, 0, 0, 0, 0 ],
+            [ 1, 1, 0, 0, 0 ],
             [ 1, 1, 0, 0, 0 ] ]
 for line_FWE, line_effects in zip(FWE, effects):
   for f, e in zip(line_FWE, line_effects):
