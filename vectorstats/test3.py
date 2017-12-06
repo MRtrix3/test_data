@@ -4,12 +4,12 @@ FWE = [ ]
 for filepath in [ 'tmpoutfwe_pvalue_c1.csv', 'tmpoutfwe_pvalue_c2.csv' ]:
   with open(filepath, 'r') as f:
     FWE.append([float(value) for value in f.read().split()])
-# Cohort has effect in element 1, not in elements 2-5
+# Cohort has positive effect in element 1, negative effect in element 2
 # Two contrast rows:
-  # - One-sample t-test of effect (effect should be present in data element 1)
-  # - Random EV (should be absent)
+  # - Positive One-sample t-test (effect should be present in data element 1)
+  # - Negative One-sample t-test (effect should be present in data element 2)
 effects = [ [ 1, 0, 0, 0, 0 ],
-            [ 0, 0, 0, 0, 0 ] ]
+            [ 0, 1, 0, 0, 0 ] ]
 for line_FWE, line_effects in zip(FWE, effects):
   for f, e in zip(line_FWE, line_effects):
     if e and f<0.95:
