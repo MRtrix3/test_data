@@ -57,5 +57,5 @@ with open('tmpcolumn.txt', 'w') as f:
   for path in subj_column_files:
     f.write(path + '\n')
 # Let's create rank-deficient F-tests and make sure they work
-with open('tmpftests.txt', 'w') as f:
+with open('tmpftests.csv', 'w') as f:
   f.write('1 1 0 0\n1 1 1 1\n')
