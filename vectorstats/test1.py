@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_pvalue_c1.csv', 'tmpoutfwe_pvalue_c2.csv' ]:
+for filepath in [ 'tmpoutfwe_pvalue_t1.csv', 'tmpoutfwe_pvalue_t2.csv' ]:
   with open(filepath, 'r') as f:
     FWE.append([float(value) for value in f.read().split()])
 # Cohort has effect in element 1, not in elements 2-5
