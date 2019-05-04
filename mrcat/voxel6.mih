@@ -1,0 +1,12 @@
+mrtrix image
+dim: 1,1,1
+vox: 2,2,2
+layout: +0,+1,+2
+datatype: Float32LE
+transform: 1, 0, 0, 0
+transform: 0, 1, 0, 0
+transform: 0, 0, 1, 0
+PhaseEncodingDirection: k
+TotalReadoutTime: 0.3
+dw_scheme: 0,0,1,1000
+file: voxel.dat
