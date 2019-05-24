@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_pvalue_t1.csv', 'tmpoutfwe_pvalue_t2.csv', 'tmpoutfwe_pvalue_t3.csv', 'tmpoutfwe_pvalue_F1.csv', 'tmpoutfwe_pvalue_F2.csv' ]:
+for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmpoutfwe_1mpvalue_t3.csv', 'tmpoutfwe_1mpvalue_F1.csv', 'tmpoutfwe_1mpvalue_F2.csv' ]:
   with open(filepath, 'r') as f:
     FWE.append([float(value) for value in f.read().split()])
 # First group has effect in row 1, not in rows 2-5

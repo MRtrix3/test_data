@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-import os, random, sys;
+import os, random, sys
 if not 'N' in os.environ or not 'SNR' in os.environ:
   sys.stderr.write('Script requires environment variables "N" and "SNR" to be set')
   sys.exit(1)
 N = int(os.environ['N'])
-SNR = int(os.environ['SNR'])
+SNR = float(os.environ['SNR'])
 subj_files = []
 for i in range(0,N):
   path = 'tmp' + str(i) + '.txt'

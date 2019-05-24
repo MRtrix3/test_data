@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-with open('tmpoutfwe_pvalue.csv', 'r') as f:
+with open('tmpoutfwe_1mpvalue.csv', 'r') as f:
   FWE = [float(value) for value in f.read().split()]
 # Cohort has positive effect in element 1
 effect = [ 1, 0, 0, 0, 0 ]

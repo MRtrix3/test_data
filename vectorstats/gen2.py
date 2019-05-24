@@ -5,7 +5,7 @@ if (not 'N' in os.environ) or (not 'SNR' in os.environ):
   sys.stderr.write('Script requires environment variables \'N\' and \'SNR\' to be set')
   sys.exit(1)
 N = int(os.environ['N'])
-SNR = int(os.environ['SNR'])
+SNR = float(os.environ['SNR'])
 subj_input_files = []
 subj_column_files = []
 for i in range(0, 2*N): # 2 groups
