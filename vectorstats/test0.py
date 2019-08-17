@@ -3,7 +3,10 @@ import sys
 FWE = [ ]
 for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmpoutfwe_1mpvalue_t3.csv', 'tmpoutfwe_1mpvalue_F1.csv', 'tmpoutfwe_1mpvalue_F2.csv' ]:
   with open(filepath, 'r') as f:
-    FWE.append([float(value) for value in f.read().split()])
+    for line in f.read().splitlines():
+      line = line.split('#')[0]
+      if line:
+        FWE.append([float(value) for value in line.split()])
 # First group has effect in row 1, not in rows 2-5
 # Second group has effect in row 2, not in rows 1 or 3-5
 # Four outputs:

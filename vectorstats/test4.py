@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 import sys
 with open('tmpoutfwe_1mpvalue.csv', 'r') as f:
-  FWE = [float(value) for value in f.read().split()]
+  for line in f.read().splitlines():
+    line = line.split('#')[0]
+    if line:
+      FWE = [float(value) for value in line.split()]
+      break
 # Cohort has positive effect in element 1
 effect = [ 1, 0, 0, 0, 0 ]
 for f, e in zip(FWE, effect):
