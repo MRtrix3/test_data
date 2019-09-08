@@ -28,7 +28,7 @@ for i in range(0, 2*N): # 2 groups
   subj_files.append(path)
 with open('tmpdesign.csv', 'w') as f:
   for i in range(0,2*N):
-    group = '1' if i < N else '0'
+    group = '1' if i < N else '-1'
     # Group ID, then one random EV
     f.write('1,' + group + ',' + str(random.normalvariate(0.0,1.0)) + '\n')
 with open('tmpcontrast.csv', 'w') as f:
