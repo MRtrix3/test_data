@@ -1,0 +1,2 @@
+# command_history: vectorstats tmpsubjects.txt tmpdesign.csv tmpcontrast.csv tmpout -errors ise -force  (version=3.0_RC3-1423-g5bd25161-dirty)
+0.9996 0.0582 0.0338 0.9844 0.7254

@@ -1,0 +1,6 @@
+# command_history: vectorstats tmpsubjects.txt tmpdesign.csv tmpcontrast.csv tmpout -column tmpcolumn.txt -ftests tmpftests.csv -force  (version=3.0_RC3-1423-g5bd25161)
+-0.119249067940635
+-0.0331533351893581
+0.192645907647045
+-0.860571141667258
+0.736100627745885
