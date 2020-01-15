@@ -6,7 +6,7 @@ for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv' ]:
     for line in f.read().splitlines():
       line = line.split('#')[0]
       if line:
-        FWE.append([float(value) for value in line.split()])
+        FWE.append([float(value) for value in line.split(',')])
 # Cohort has positive effect in element 1, negative effect in element 2
 # Two contrast rows:
   # - Positive One-sample t-test (effect should be present in data element 1)

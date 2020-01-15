@@ -6,7 +6,7 @@ for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmp
     for line in f.read().splitlines():
       line = line.split('#')[0]
       if line:
-        FWE.append([float(value) for value in line.split()])
+        FWE.append([float(value) for value in line.split(',')])
 # First group has effect in row 1, not in rows 2-5
 # Second group has effect in row 2, not in rows 1 or 3-5
 # Four outputs:
