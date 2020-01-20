@@ -2,9 +2,12 @@
 # Script for testing element-wise design matrix columns
 import sys
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_pvalue_t1.csv', 'tmpoutfwe_pvalue_t2.csv', 'tmpoutfwe_pvalue_t3.csv', 'tmpoutfwe_pvalue_t4.csv' ]:
+for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmpoutfwe_1mpvalue_t3.csv', 'tmpoutfwe_1mpvalue_t4.csv' ]:
   with open(filepath, 'r') as f:
-    FWE.append([float(value) for value in f.read().split()])
+    for line in f.read().splitlines():
+      line = line.split('#')[0]
+      if line:
+        FWE.append([float(value) for value in line.split(',')])
 # Cohort has positive effect (first contrast) in element 1, negative effect (second contrast) in element 2
 effects = [ [ 1, 0, 0, 0, 0 ],
             [ 0, 1, 0, 0, 0 ],

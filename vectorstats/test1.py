@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 import sys
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_pvalue_t1.csv', 'tmpoutfwe_pvalue_t2.csv' ]:
+for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv' ]:
   with open(filepath, 'r') as f:
-    FWE.append([float(value) for value in f.read().split()])
+    for line in f.read().splitlines():
+      line = line.split('#')[0]
+      if line:
+        FWE.append([float(value) for value in line.split(',')])
 # Cohort has effect in element 1, not in elements 2-5
 # Two contrast rows:
   # - One-sample t-test of effect (effect should be present in data element 1)
