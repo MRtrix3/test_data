@@ -1,0 +1,16 @@
+input/sub01.mif
+input/sub02.mif
+input/sub03.mif
+input/sub04.mif
+input/sub05.mif
+input/sub06.mif
+input/sub07.mif
+input/sub08.mif
+input/sub09.mif
+input/sub10.mif
+input/sub11.mif
+input/sub12.mif
+input/sub13.mif
+input/sub14.mif
+input/sub15.mif
+input/sub16.mif
