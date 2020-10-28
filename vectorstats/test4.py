@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 import sys
 with open('tmpoutfwe_1mpvalue.csv', 'r') as f:
   for line in f.read().splitlines():

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Script for testing element-wise design matrix columns
 import os, random, sys
 if (not 'N' in os.environ) or (not 'SNR' in os.environ):

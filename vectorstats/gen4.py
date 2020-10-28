@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Script for testing per-element design matrix row exclusion based on presence of NaNs in input data
 import os, random, sys
 if not 'N' in os.environ or not 'SNR' in os.environ:
