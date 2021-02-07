@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 import os, random, sys
 if (not 'N' in os.environ) or (not 'SNR' in os.environ):
   sys.stderr.write('Script requires environment variables \'N\' and \'SNR\' to be set')

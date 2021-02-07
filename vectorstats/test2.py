@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Script for testing element-wise design matrix columns
 import sys
 FWE = [ ]

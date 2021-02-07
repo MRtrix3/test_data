@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 import sys
 FWE = [ ]
 for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmpoutfwe_1mpvalue_t3.csv', 'tmpoutfwe_1mpvalue_F1.csv', 'tmpoutfwe_1mpvalue_F2.csv' ]:

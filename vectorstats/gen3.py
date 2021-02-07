@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Script for testing whether or not Freedman-Lane crashes in the absence of nuisance regressors
 import os, random, sys
 if not 'N' in os.environ or not 'SNR' in os.environ:
