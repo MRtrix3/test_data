@@ -43,5 +43,7 @@ with open('tmpsubjects.txt', 'w') as f:
 # Also perform F-tests:
   # - First contrast only; should have an effect in elements 1 and 2 (since it's unsigned)
   # - First and third contrasts; tests for effect in both group and random EV
-with open('tmpftests.csv', 'w') as f:
-  f.write('1 0 0\n1 0 1\n')
+with open('tmpftest0.csv', 'w') as f:
+  f.write('0,1,0\n')
+with open('tmpftest1.csv', 'w') as f:
+  f.write('0,1,0\n0,0,1\n')
