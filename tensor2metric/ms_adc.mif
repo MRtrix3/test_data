@@ -1,0 +1,188 @@
+mrtrix image
+dim: 11,11,38
+vox: 2.5,2.5,2.5
+layout: -0,-1,-2
+datatype: Float32LE
+transform: 0.99967611012337, 0.0240821847390341, 0.0082294122999989, -18.4003744034466
+transform: -0.0243715237460563, 0.999014974745693, 0.0370824630271216, -1.42005942533983
+transform: -0.00732827939585775, -0.0372710157100322, 0.999278323445995, -30.4247963825247
+command_history: /usr/local/Cellar/mrtrix3_0rc3/3.0_RC3-0-g57e351eb_1/bin/mrconvert "dwi_post_eddy.nii.gz" "result.mif" "-strides" "-2,-3,-4,1" "-fslgrad" "dwi_post_eddy.eddy_rotated_bvecs" "bvals"  (version=3.0_RC3)
+command_history: /usr/local/Cellar/mrtrix3_0rc3/3.0_RC3-0-g57e351eb_1/bin/mrconvert "result.mif" "/Users/Marlene/MRI/projects/adv_tractography_tutorial/DWI/dwi_den_unr_preproc.mif"  (version=3.0_RC3)
+command_history: /usr/local/Cellar/mrtrix3_0rc3/3.0_RC3-0-g57e351eb_1/bin/mrconvert "/Users/Marlene/MRI/projects/adv_tractography_tutorial/DWI/dwi_den_unr_preproc.mif" "/Users/Marlene/MRI/projects/adv_tractography_tutorial/DWI/dwibiascorrect-tmp-MROTZZ/in.mif"  (version=3.0_RC3)
+command_history: /usr/local/Cellar/mrtrix3_0rc3/3.0_RC3-0-g57e351eb_1/bin/mrcalc "in.mif" "bias.mif" "-div" "result.mif"  (version=3.0_RC3)
+command_history: /usr/local/Cellar/mrtrix3_0rc3/3.0_RC3-0-g57e351eb_1/bin/mrconvert "result.mif" "/Users/Marlene/MRI/projects/adv_tractography_tutorial/DWI/dwi_den_unr_preproc_unbiased.mif"  (version=3.0_RC3)
+command_history: mrconvert /home/donald/data/BATMAN/Supplementary_Files/dwi_den_unr_preproc_unbiased.mif -coord 0 '40:50' -coord 1 '40:50' -coord 2 '3:40' testing/binaries/data/dwi_ms.mif  (version=3.0.3-116-g5f160d10)
+command_history: /home/donald/exp/dev/bin/dwi2tensor dwi_ms.mif -b0 dwi2tensor/ms_b0.mif -dkt dwi2tensor/ms_dkt.mif dwi2tensor/ms_dt.mif  (version=3.0.3-479-gbc67c09b-dirty)
+command_history: /home/donald/exp/dev/bin/tensor2metric dwi2tensor/ms_dt.mif -dkt dwi2tensor/ms_dkt_constrain.mif -fa tensor2metric/ms_fa.mif -adc tensor2metric/ms_adc.mif -mk tensor2metric/ms_mk.mif -ak tensor2metric/ms_ak.mif -rk tensor2metric/mk_rk.mif  (version=3.0.3-479-gbc67c09b-dirty)
+comments: 5.0.11
+mrtrix_version: 3.0.3-479-gbc67c09b-dirty
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: -0.4078802722,0.4219048955,-0.8097097892,1000
+prior_dw_scheme: -0.333859698,0.349188588,0.8755598392,1000
+prior_dw_scheme: 0.4162519048,0.8776300036,0.2376971363,1000
+prior_dw_scheme: -0.6390855136,-0.7223272325,0.2642216407,1000
+prior_dw_scheme: 0.1220523161,0.2138622738,-0.9692090383,1000
+prior_dw_scheme: -0.8987997952,0.4380608795,-0.01617386957,1000
+prior_dw_scheme: -0.06166871934,0.9966751546,-0.05325040128,1000
+prior_dw_scheme: -0.1169680204,-0.7762559782,0.6194716608,1000
+prior_dw_scheme: -0.7561059006,-0.4666647867,-0.458833133,1000
+prior_dw_scheme: -0.05474851787,-0.7413888163,-0.6688387121,1000
+prior_dw_scheme: -0.8129152143,0.2428648172,0.5293255471,1000
+prior_dw_scheme: -0.6466832751,-0.3191873505,0.6927627134,1000
+prior_dw_scheme: 0.972672821,0.2192209296,-0.07648377121,1000
+prior_dw_scheme: -0.3625933492,-0.2367807316,-0.9013661566,1000
+prior_dw_scheme: 0.5278449229,-0.778898592,0.3386690432,1000
+prior_dw_scheme: -0.4922018946,0.7943337655,0.3560493841,1000
+prior_dw_scheme: 0.843158297,-0.1221872207,0.523597526,1000
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: -0.5618683816,-0.6314112072,-0.5344378442,2000
+prior_dw_scheme: -0.5472907511,0.8363764006,0.03077905568,2000
+prior_dw_scheme: -0.7244412795,-0.6838170646,-0.08705776626,2000
+prior_dw_scheme: 0.5727072854,-0.5584042779,0.6001591686,2000
+prior_dw_scheme: -0.8315460295,0.1523685138,-0.5341488901,2000
+prior_dw_scheme: -0.808355272,0.5486444085,-0.2134269602,2000
+prior_dw_scheme: 0.1452433566,-0.5548048703,0.8192044454,2000
+prior_dw_scheme: -0.3317360185,-0.9217480386,-0.2008277058,2000
+prior_dw_scheme: 0.216196585,0.3020142968,-0.9284645395,2000
+prior_dw_scheme: 0.4488704384,0.8576369885,-0.2509464595,2000
+prior_dw_scheme: 0.9506090784,0.3073673373,-0.04321689542,2000
+prior_dw_scheme: -0.0138699963,0.9957391141,-0.09116600165,2000
+prior_dw_scheme: -0.1833830573,0.9299824001,0.3185959663,2000
+prior_dw_scheme: 0.187337989,0.4330546317,0.8816848438,2000
+prior_dw_scheme: 0.2486111165,-0.585994308,-0.7712348435,2000
+prior_dw_scheme: -0.7631736431,-0.5090952489,0.3979799216,2000
+prior_dw_scheme: 0.4731969948,-0.2053259135,0.8566947375,2000
+prior_dw_scheme: -0.06044846284,-0.8426935205,0.5349893587,2000
+prior_dw_scheme: -0.4159406603,-0.6103184587,0.6741696716,2000
+prior_dw_scheme: 0.1358559828,0.7881900259,0.6002496439,2000
+prior_dw_scheme: 0.3166060968,-0.1670939077,-0.9337238379,2000
+prior_dw_scheme: -0.1158577355,-0.003107117512,-0.9932609581,2000
+prior_dw_scheme: 0.5880493569,0.2314547104,0.775001078,2000
+prior_dw_scheme: -0.9184487503,-0.010847594,0.3953912276,2000
+prior_dw_scheme: 0.8663896956,-0.4418763388,-0.2326245827,2000
+prior_dw_scheme: 0.9872849263,-0.1274982371,0.09493510368,2000
+prior_dw_scheme: -0.6445653813,-0.1798610729,0.7430918272,2000
+prior_dw_scheme: -0.3598478924,0.8571689734,-0.3684709559,2000
+prior_dw_scheme: 0.5555697037,-0.6909508249,-0.462524877,2000
+prior_dw_scheme: -0.8680865384,-0.2970311822,-0.3977414219,2000
+prior_dw_scheme: -0.6794384137,0.29433113,0.6721105771,2000
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0.2834962344,0.3929423486,0.8747720822,3000
+prior_dw_scheme: -0.7534879863,0.6234175253,-0.2088215596,3000
+prior_dw_scheme: -0.08096839341,-0.9898057039,-0.1171699096,3000
+prior_dw_scheme: -0.4079724203,-0.01049805594,-0.9129338942,3000
+prior_dw_scheme: 0.8272970454,-0.531333693,-0.1823844985,3000
+prior_dw_scheme: 0.7253829781,0.6815265583,-0.09664929064,3000
+prior_dw_scheme: -0.9935610798,-0.08219602288,-0.0779756023,3000
+prior_dw_scheme: 0.1244794085,0.957958255,-0.2584973085,3000
+prior_dw_scheme: -0.4427985775,-0.634038617,-0.6339751192,3000
+prior_dw_scheme: -0.4748965802,0.8411213317,-0.2588206782,3000
+prior_dw_scheme: 0.09649081229,0.6822339581,0.7247388148,3000
+prior_dw_scheme: -0.3220404251,0.9040043763,0.2811868636,3000
+prior_dw_scheme: -0.3273443514,-0.8655185622,-0.3791085519,3000
+prior_dw_scheme: 0.884846935,0.02650780691,-0.46512712,3000
+prior_dw_scheme: 0.1757309941,-0.6241644753,0.7612734893,3000
+prior_dw_scheme: 0.1683218598,-0.8703367122,0.4627977517,3000
+prior_dw_scheme: 0.02111755679,-0.8892890267,-0.4568578289,3000
+prior_dw_scheme: 0.59397178,-0.8001811463,-0.08311231911,3000
+prior_dw_scheme: 0.3408059642,-0.1525960197,-0.9276668311,3000
+prior_dw_scheme: -0.1861471529,0.2893884384,-0.9389374682,3000
+prior_dw_scheme: -0.1317878594,0.448565528,0.8839801622,3000
+prior_dw_scheme: 0.9115125684,-0.1369821321,0.3877895475,3000
+prior_dw_scheme: -0.06273121306,-0.140033951,-0.9881575216,3000
+prior_dw_scheme: 0.7912041664,-0.3487401005,-0.5023706892,3000
+prior_dw_scheme: 0.7362921516,0.5425241262,-0.4044025717,3000
+prior_dw_scheme: 0.1534892444,0.4990430371,-0.8528757817,3000
+prior_dw_scheme: -0.458120547,-0.2300577375,0.8586029361,3000
+prior_dw_scheme: -0.4124181883,-0.910698006,0.02324607003,3000
+prior_dw_scheme: 0.1369601751,0.1503302841,-0.9791030161,3000
+prior_dw_scheme: -0.7235292503,-0.2808130978,0.6305945037,3000
+prior_dw_scheme: 0.8737527105,0.2042064442,0.441424885,3000
+prior_dw_scheme: 0.2165488276,-0.9737712223,0.06982987876,3000
+prior_dw_scheme: 0.9681877547,-0.1617428845,-0.1909233118,3000
+prior_dw_scheme: 0.4819739665,-0.6629837515,0.5728469612,3000
+prior_dw_scheme: -0.4673539266,-0.5734927235,0.6728197406,3000
+prior_dw_scheme: -0.6102366227,-0.2853153561,-0.7390577865,3000
+prior_dw_scheme: 0.4597647109,0.8069755495,-0.3706843309,3000
+prior_dw_scheme: 0.6581125205,-0.09029387026,-0.7474857372,3000
+prior_dw_scheme: -0.7456335512,0.4235224391,-0.514450533,3000
+prior_dw_scheme: 0.5931869539,-0.6719298467,-0.4434405472,3000
+prior_dw_scheme: 0.9306865448,0.2949822373,-0.2163516467,3000
+prior_dw_scheme: -0.7256296856,-0.5106859618,-0.4611522609,3000
+prior_dw_scheme: -0.4969399517,0.3582283762,-0.7903942781,3000
+prior_dw_scheme: -0.1575590442,-0.7814521854,0.6037446725,3000
+prior_dw_scheme: 0.9354812104,-0.3358530326,0.1098983415,3000
+prior_dw_scheme: 0.8899088545,0.4399554222,0.1204219963,3000
+prior_dw_scheme: 0.7114060651,-0.0682820024,0.6994562021,3000
+prior_dw_scheme: 0.6247293828,0.745749786,0.2314529217,3000
+prior_dw_scheme: 0.5087016344,-0.4368656217,-0.7418699857,3000
+prior_dw_scheme: -0.2863350029,0.7104460653,0.6428675248,3000
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+prior_dw_scheme: 0,0,0,0
+file: . 8672
+END
+          ¨X¹:0ù¤:	óy:ä;Mô²:Ü^:öGE:¿˜0:†}X:AoI:|ÏJ:bi:#³:‚’4:Uü:îË:šk%:¿E:–6:,(f:â­N:U?:Ia:Ì°M:¥s#:ú˜;C
+;ê˜Y:&îP:§h:¥M­:-ä|:$ž.:¼+`:÷…W:18:5hë:…â:´>:uþ{:Y¤]:F[—:oíe:ÞsC:œ’G:†m7:±FU:cž­:ØÿQ:VÎh:É’{:’ì:çŸ4:1(7:gD:¾¶ƒ:yR:týA:ÉÁv:'O:JïG:né\:¨.‚:ú9g:<:eôE:AïŠ:¯>`:²L:ÒÅ:L’²:Ë\X:îÛÀ:Ôµ:y³9:2L:NtF:VU:dÀw:-SÙ:­Œ;ð¬³:‰Ý…:Pž:Aþ…:´#V:$ý>: I:™>K:ÄÃ‚:TÀ:Î´¤:µK:Pˆ@:¬‚:À½€:œÿV:l#I:.Ý>:ªhÈ:0(™:Lr:Æ”:Ûœ~:%¬:µ¤:ð„:q:d%5:nsA:ßú÷:üZ:7þM:¢Ô‚:;Cb:6t:)Ó:ñq:ìñ}:Þ1:¬ÜK:é?U:ƒF:_>7:ÁÕØ:Ç¼:{ÞE:Y£q:g@:ÚŽB:»l<:÷–B:— ):õ!i: e:´·;™,;¤÷f:Øm:NÑ;:P:*TI:3sD:R]K:Ø>J:l:€Ð
+;O6À:H£b:¶X:UØJ:²dk:$o:~Ú6:r1P:X«b:"CW:hÑ:­û„:Œ7:s‰w:b}:ÂÌZ:{»X:0LJ:©]:ÚSJ:uéj:2Á:U]^:0ÀŒ:‘äu:,P:¥8K:èÄ@: ŽK:Z_N:Ó¿P:A‡b:Òž:¦‘ƒ:Q%k:Z|:(UH:…€k:­1U:¨¶D:ÀL:
+¢p:¿2h:&-Ù:s8Œ:×B:ÙÅR: 6Z:Ö\J:¢::niH:OK:Ä':»W:K·Þ:a@O:õ¸W:::€Üh:ëOL:7%6:ÓÕE:ÂYR:²š=:“a:ÓHc:ÛOe:ovR:LJE:ÒÏy:½Zo:'-:@ë?:´?:\ïG:BS:Žýj:¼®_:ÈK3:¦K:LW:Ò<i:.1K:!ë@:œJY:¥>:áý]: qs:©8R:{5>:‰.R:g‚>:Ç¾<:‚GR:@xE:ý®4:ßRg:ºjM:òó:¨”¿:YO:–b:»ËY:Ža_:·ß7:V C: T:äK:Õ§g:VPÜ:ÿ‡:¹ÌM:OÝ[:;-K:x@K:ur@:f-A:­9:«Ç.:t0n:¼¨:;y^:”è7:“kM:C<::XC:œ©b:…+I:®
+C:DØB:I„N:÷Ø¡:µz|:80Y:­®c:‹¸J:É&P:í^:„IV:ö/g:042:6Y:°5¾:²1y:×t:ÄQ:ÝÐ]:@T:}LP::ŠO:wÓn:×ƒ4:[Q:¨Ç:‚‹€:|H:cn:G:ß4Z:püV:ÆKE:p¢d:Ê´&:lAa:‰àÉ:cˆ]:¼8:N:{ÒD:QëR:ƒšC:EàI:°vd:Dž5:üN:ï†:|hJ:†_d:MèI:ñQ:H:,„D:¼F:ÌU@:€P=:Ÿ,-:}îG:À®U:ÆxL:lþF:„>:—S:à;A:gA:üEL:¹YB:QÇI:óÎ:¢ëg:Ç×):|—S:2&;:¡>:Þ¶D:êfA:ûI:£R:u½0:ƒûŽ:C³q:žE::ûY:WS:JL:ð¦?:ÚÀ@:ò¢e:å¾c:X(Q:±s›:zkL:9::Ù‰A:ü¸>:xN:ƒnM:¸}N:E:c:§¶\:;^^:&Š:HôV:üÊH:ÅT:Ýù6:¥E:¦áG:CH:vŸP:„Ic:0``:¾Ñ¬:’®S:nÎn:p:>:<ñP:³{>:³SA:ãþg:ØW:(r:bÖ:97z:CX:4=K:î¯F:¡VM:`Æ<:†XI:ÇœW:ô[:†Œ:™îê:¤:T„]:TJU:NƒS:"M:å":ö9F:È‡N:âÐY:õWd:çjÄ:3p~:£C_:Éo:¢\:;M:>ò	:pŠ<:‘žJ:«xi:‡$_:™:BY`:Ë:R:çöZ:Ù|d:÷P:Ðt&:Ji4:8M:ù§d:û\:)Ç‘:(Ád:7Q[:Þik:EM]:ð~P:ó4':%Ó/:ŽþI:kÆL:vÍ?:ïá“:9ðq:¯'Q:¬æh:—)E:G5U:—¶;:¢^7:š^^:e¥G:"D:èš:šc:Ï):é¯p:æ=:0k^:'“J:=>:`{d:zR:Áz3:R.Œ:>%^:ñ"5:R‰Z:ïD:àÝK:l[:XyO:¶þW:ÌfV:¬›u:×g¯:°h:i H:ihN:Œ1I:VB:Êûÿ9˜²B:­H:’eN:$¥ˆ:­3Ä:r‘{:˜?:5í7:²Y: Í?:\m9:pL:[H:ˆû@:H‹–:ýþû:²4€:œ1P:ü]:¢&F:€ip:Ž=À:Rôy:=O:m„::ý•:Ü¯î:â‹:A„F:YéX:¢ E:‘oh:Šÿè:oý•:šÁk:§)A:y›…:+é:ú=r:UÑI:DZ:l>J:8Ýž:³Œ;³x¿:Ú<k:ÿ^:¯õy:¯FÛ:Yw:oSX:æÉK:…22:×Â:ö8;¸ä:?¥_:¼¿[:¼ã}:E®Ñ:9Gˆ:\Eq:&HB:ã^-:î¤:Yh$;eDï:±Äo:ya<:‡‰ :RVè:þÅe:DÄu:b,L:R3B:îo‡:¹,;®	ü:Ôrp:¢ O:¢'»:I7;~“…:i1n:í«]:·Í>:W,j:Ž&	;Û»;÷f::m:VÇ:Úr;7§:*Ó…:ö¤`:;ÍF:ÔÈV:ÊzÍ:ZáÙ:¹¸h:wý|:(Zº:è=;p·:%2‘:	‹c: tI:T	Q:“¢:ûX·:Ã©n:õN:ð×‘:ô†ì:q[ˆ:êT:‚
+n:UÜ:EØ:[„;ë_ª:öÑm:°1x:QÞˆ:‚a:íÒk:pko:%Š::ÖŒ:ŸT6;v];Ê×Ù:®ÛQ:Âh:ÖYt:¾…k:e:–›h:é^:üüí:ÿ‡d;g·n;ôr;–Ú:“[::ùLb:G²^:ò«X:ó†F:ˆÄ#:Ö;á8k;Mxv;è};ìI:3&:ld[:ì3Q:F(\:9>L:9¸\:]³;ajq;œ]q;ùs0;èÉ”:…$:ù¿W:0‘J:$„H::Œ :ŸâD;v{;Ùnu;ÃS;±Dž:ƒ:UBB:äÌ?:„¢2:<N:f:¢:8;;ÚÑ{;,ãt;æc;á_ :X:Ë¬I:ftA:	©6:Ÿ:6d‹:Æ 4;wOy;Ø2|;&Cm;åîŠ:ï,:¼oS:ÂW:hº@:ÁZ:I]:úN;lÊs;,üy;s;S[c:Þ;:ÑœY:ËJP:ïS:¿MG:$¢$:´ÚÚ:üÚY;-C};+ïs;*»>:-€]:)¸u:æŽe:VÓR:ÙX:a.:Xòµ:ŸI;×<;œÚp;\bO:ßù :Ú¸Y:aøT:ÌM:ÿÓ):±'‚:D5;žÉ};ª´o;di;ówÐ:Rç:I3:ÈÇK:Þ:ûÁ/:{†;Ýær;Âôv;;t;k±2;¸Ä;&n:ïw:V–&:ÿ:3:ZˆÍ:`´D;¨Ûx;âey;x€;/q1;eW;<ù;Àbv:Šå1:ø5:Ð.ø:ÚŸV;‡Ÿx;Ÿjz;Pþ‚;qê9;6ôp;+3;¢e¹:Þ˜Q:ž¢¡:Éý ;#®m;?w;bîw;òt†;/Â3;n;OH;”å:
+Xc:QTé:ûBj;Ší;Ýƒ;£|v;jG‚;_ÿ#;Óq;°BR;où:p:ÍPæ:¯Óm;áQž;ð˜„;Q[;É;9˜6;¤vs;`J\;Ú;ï:~: ì:Rµj;s<;ÎK;eGy;Vó};„^;Žv;Û<V;FY;¸Ây:È¼Õ:”^;q^;yœ};ƒÊ|;Åq~;àk;±{;¹»P;òHý:}
+d:Ã:¾i*;2p;è]};„¼;X„;0ýl;[q;8Þ?;ÎâÊ:Z%:kÈg:Å8÷:~ST;§;^‚;¬÷z;ªO};,‘c;Î®$;†’¨:ŠR%:V‚¡:àÿ!;©e;fz;Eçz;us;'*;ÞŒy;zB`;\Ê;[:î;;·j;Ñ9x;í½v;ð–x;"²t;†ç;Ñ{;”7;ÅaR;@€ç:/>;ýWy;[Ÿs;ôÂv;Æw;XÝc;õ¹à:©y;j]|;5k;AX;¼\_;zÄˆ;Lä‚;ùr|;Ê€;B1Q;bv¨:ãp; Ql;%•i;g«;Tw;®ú›;øÅ™;ñ;r‚;ThA;âN€:**q;@n;æwk;qÓ;’åƒ;c1q; á;û•—;qÐ†;6+;Q.I:{r;…øn;Ú'l;d]#;Œ‚o;Y½u;‹€;xÜ”;F ‚;EÆ%;^û\:Š‡t;"‹t;8;r;ûÿ4;¬Œz;nÒ„;)7Ž;©Î;@Û;JàM;œJŒ:Ùv;„Ì~;½•f;LX3;±p;x}†;šË};…H};NÌ~;ç h;ŒÙ—:s;m;Œ+s;°»;/ä^;s;e—p;ó{;¸Øx;:$x;XŒØ:E÷v;ª%„;2ùq;ºP;xR>;Œõn;€Fr;'b{;2a€;%€;Vš);EQ{;Öq;Í–i;¤¼;a®R;'z;Ö6s;êöy;Ÿ7q;šW2;š#ž:RH‚;m™w;‰ëm;´82;Y~g;FÝw;q;ÿ-y;³™S;]†Å:«ÖN:Ùš…;-\z;/p;ÍŽB;3Dm;1ôx;ß¡s;Rz;ãª+;Z:=mG:$Ø~;Üt;Šðp;ƒ"J;)ƒ~;®îŒ;½¦Œ;¤(‡;t
+ÿ:¢”_:Z„T:&™z;!w;;Áp;¥IL;^jŽ;¢¨’;$—;¿”;Ÿ±ç:?L:P_:œ,;Ÿc;\Rƒ;±ãB;ÚBŠ;Ãy;CÞx;k“;ƒ¸;ài-:L“O:¢Ø„;¸„;:0z;ptO;qòz;‡à‚;Z~;+¬’;R÷M;˜`÷9pÏI:ˆ~;‡4q;4{;<OZ;9 };âÃ‡;î‹;èþœ;Iv;;H:±Þ8:R~|;¡fY; ç€;7ÇX;@Öi;'‹;á‡;%yˆ;0Øy;´‘×:Q:Íkt;Xw`;#z;ðyF;u$l;0x;Äôv;Ý÷};î„;jw1;ƒP:b£{;‡yY;M€;Â$;;þj;q x;bÀx;`l;Ï;Ä>i;^Àd:m¯W;ds;v¿q;¨åP;Ý½m;ü|;øOx;l>f;â±®:Òzn:ÙO:E;ý+|;zu;fFU;q;\ú;BCr;ÄX;;¦F:Ê>:¤çE:dY; …‚;Ù°q;•bW;¸z;`Xz;óòp;› ;u<:®Æ#:ë$8:m;˜{;®¸r;Ð]H;ÔJv;ëƒ;N{;ùQ;ç:GþF:³Q:Zî{;y„„;ëö{;‚1;ö~;X¼˜;j•;\¥=;ª-:OŽ?:y\\:ñz‡;Ñ†…;©Úƒ;È1;¶;Bw‹;UÃŠ;QL„;B
+[:aE:Û›J:±å];³D8;¸©X;m
+;x;¤
+;Ô‡;å]Š;C·:°b<:Œ‡I:{w3;ýG*;(ÙS;««:¿ÃC;ån;ÿÍ…;Ã•q;èf½:¾ÊF:èM:‹B;·©;ß|>;6ê:šæ;U›U;jd;¥Ö:;7´ž:j8k:ŸõZ:>»;@<C;!dU;ññ:ÓÓ ;¤W;²§T;]%;'À:¤†p:ƒN:˜>þ:T£X;*•u;è¯ä:¡+6;ðïe;›ÿ=;Âð5;2£ð:DŠŠ:Š)6:”Ÿ÷:yÛw; †r;~Ìj;
+zj;¢Í|;ŠŠf;-®‡:(q,:®g:`/:qc;¾'x;Ër;>`a;x;¿èx;ƒ-Y;ß	„:°I+:øi:{]R:(;=ž‚;×âp;?‡f;yªo;Õ¿z;¿>T;C÷[:I=:‚HJ:aù?:›G;Èo‡;sÛr;ð5:;ÌÙk;JU‚;	Á_;2©®:.Œ+:þoG:c&:zj;_‹;BúY;h9á:Þ]m;‘;¨œ„;nS;¿z	:Ñøh:W˜H:uÎU;c{b;×;^Ñ:ˆr?; Æ;X7;bG;ê3:m"a:n­C:Bá’:Å,l:Ý±;Y È:c÷:C%;¬Æ;BÒ:ÇÐ]:	9X:ÔÂA:±•K:n«l:¬;Ð:Q\;u²Ã:ÐÄD:HÎŠ:R^6:­gU:ª	.:1K:É
+y:EP+;kÿ;Hœ;Tõ;áD:n»u:`‰>:ÛŒ[:x0:y#:×©Ÿ:ÃžD;³NB;g¤;Žø;ãö;:4Q:I™:xh:F+:©:¢DÙ:œJ;O L;®*;((;¤¼¨:”§4:¤ãU:p:ã@:>d‰:Îd; r€;/e;u¿u;×l;uãÚ:¤$(:‘JE:‘·1:ÇÕG:Ä±:[Þu;ðˆ„; d;ôŽw;Ãq;jQß:<Ïü9üjg:þ-5:X§/:y
+;Gß};f;"}J;[p;Êƒ;‚º;¡!*:îÊP:•ƒ3:‹m@:7X8;ÍØ‹;ÅÙa;”Ìø:—C<;/Hˆ;HF;%†:™]:J°H:¼ø6:ŒÐ6;•ì„;ƒq2;Óc:J4;êA‡;Øi;Ý¨©:WÊt:›GM:!R6:r¿:8{;Ýù;äjÉ:ä>Þ:ëËH;{‰	;èAˆ:žøO:\7:N:ÞS:n+9SfÖ:T®;llç:Þà‰:¾ú:<	v:ù{,:v­C:9›6:ÂÃb:»\:Þ	°:]€/;{Û;ÿÔ˜:Ç<<:ã O:MsZ:ÝiN:G¶9:';?:Š³):¥Å:*8C;$û3;xK›:ï{/:?Ôc:‰dM:A<:ÍOE:._l:¿©3:‰Ë:b[;'k=;!ž:°â:vo:¼`:±$E:–_,:ÄYj:(qB:	¬Õ:®6w;L/a;þÅÑ:·æ/:ÑÝC:Ñ4d:*U:(á8:¹¢:î°J;ÉŒn;™\;
+‚Š;€j;JË:Ø¶P::…:B-?:˜?2:Ý³¨:Â~r;­üy;¼c;W_;`'ƒ;©–k:¦¼X: D:‡wG:]YH:È†;ãÝ‡;)…;Ò¾,;¤äm;3:;ÐÈù:mšX:ØÏY:½™A:ÕR:2©;Ê5;«o;"X§:{);{ ;3Ý,;Ú^:çji:sQ:‹Äh:0Ù:{8m;©‰;;~%J:tà:Û4g;ªü;¦ƒ:Ñ‘D:JU:ðD:ýw`:ô.|:P)ó:Ý÷:±fÝ:û¶:élG:œ$P:×AE:^÷O:g)G:=¾S:äÅ:¤ºf:Ú ;mý;Ï´y:éšS:IÒl:ìP:d@:T,H:eJ:Z@r:Øê:w’ ;¼/Ú:¨m.:¹éB:“gX:CI:”MB:Y=:¬ÔL:hé]:bÓN:´)Ú:â#º:y+>:Î…a:¾ˆJ:™@:P½G:Wm>:¶ÌI:‚®:ÐÁ?:ýÜî:”€Å:¶P3:JÉ~:­4:QªI: K:¿D:Kp:ó P:Tc:…º;Lõ:Xv5:{Âi:À=:òh=:dzC:ÂL:À?:…$(;î‹„;b‚l;)Ö;í·3;Ú:¶F@: E:æ¯]:3ŽK:KÙ¥:ÇÊg;QÜŽ;i÷X;ö‡;D9y;·þT:êP:ã×/:PÎ\:kg9:?Öï:ßð;ÕrŽ;û”;ZtG;B;¢;F;½ßo:)VZ:™O:P7:@OÂ:KL;TÉq;Úå#:mÙ;xg;ÙX;uÃs:P¾}:Þ:®©_:øæ{:ü#;¨IB;þT¼:Ø;ÐÉ?;>::3šU:s¦S:=O:¯m`:ö2^:<k: ¡:ñ÷;:®;¦Œ:\ÀF:Å{N:1 5:3·X:zºP:j‚F:u@K:ykA:OÒ:ö§:.‹<:’<j:2Ñ6:Y:PñX: >:è¸O:˜ÕF:ìa:·(‡:-Á~:uŽC::¾E:7C:½óY:UZG:Œ
+2:`:‹Mk:Që(:·O‘:Z.„:Ô>:Ê•]:º·f:±H: 3:n>:jT_:}T@:˜U8:Ç™:Gƒ:„™=:è2:û__:sžd:DRD:ÛP<:ÃøG:\8:±<:ÿù:tÊÏ:Ò…0:˜j[:²d#:Q¼W:ÃüP:šƒ::ûÃ:E;7C{;¨Ce;Lá‚;Þ™,;RŒ:AP:£ŽK:XXa:–h5:	r‚:½òI;É€;`¿.;'u;@sx;ôf:²XN:[4-:¹‘f:~:-:‡´:&z;÷®m;Ç˜:žB;hK•;8ò:¶”:Ð:r:“ÉN:q¡4:h‘:ð¼;;}®T;ãå:|#ð:ˆÎs;=Jß:c½J:T|_:Ií_:¢o:P5:w7¬:eÍ?;uÖ5;×ëG;rË;³¾D:%sM:zËF:ò€`:.A:÷IX:î;=:Š«:Èc;qp!;ˆEM:õ@f:}ïG:ì‚>:t§6:‘kF:_N:CDP:Ó`Q:ò6Å:€y‡:»©A:÷gv:vMM:þ!K:ä^E:¾*:Y:EJ:n8F:S¼~:Jh:pcJ:k˜a:#µi:;çR:Ä½6:ÂA:4ÕZ:‚­[:ZD:ó˜:0€:2m5:©tQ:2H:™R:SI:(f8:rI:·N:ÙúN:Ot¬:öý‡:Ý.0:?Œ5:ŠâK:o2W:KÞG:µë8:â­R:™9J:KuA:ñEý:õ'Ê:æþ-:ÖµQ:’Í>:V9X:‘H:´BD:Ù
+D:Èæ:Ð	„;­CÚ:ã<9;²‚!;9&=:.äI:“r;:ìW:)­J:’‹Z:Îþ&;p@‰;ÁÈ„:Nø6;^Ëb;‚æe:Û59:Ï>:ÜÞ€:ÖË<:z‘a:m!&;ã);äG:b^í:‰F;{ä¥:ð=4:ÂÿG:Ì€:v+T:†½L:´e»:$¶:f:Ó”ž:EÈ:Îû¤:ÜQ:TZK:4,8:8Z@:‚<E:´2:®Nã:F¹P;1©;:;¥,:VQ:Q²<:|©l:Xö5:_ãU:u8.:šä:˜ƒ;¸);cC:åÙg:knP:ÔÃU:MŒ":·D,:µ’P:Í¯E:ê%v:A_÷:÷E¥:Ü9E:r~:M:”ÔC:ø­T:ÅŒ':ÉM:Çh:¶`]:I&:qCC:Ë·Q:ÖV:>¸F:rI:ŽÃM:ôaR:šçH:ZþT:Ìvd:å’w:Vg_:?O:c…O:'îO:·ÉQ:rÀN:9ˆQ:Åd:ò,h:]'7:—|Ê:Šƒ :Ÿ•/:=q:`ŒN:·I:!L6:@§A:r9S:‚+]:«­b:Å,;Òoþ:>!:»«k:l7L:áLT:þ9:£ýF:Ï¨+:jœ:]Ä:Ý¤:jzÐ:µÁ¼:d˜i:‰>:ˆS:Z÷X:´W;:Ì¿K:˜î±:hÒ:-¤Ü:_`Ø:Ø.Ô:Ïqo:Õ>:1u:Úßg:{ÅV:¬÷:…ßŸ:Ä`–:A»:¬H¨:Ur¡:•X‰:GíL:bªW:Öv%:áîd:KŸ}:) V:ø'?:ód: ¡_:ÆåY:X6:åÑ(:T†,:D¼4:}'7:T:…"I:6J•:õ]4;ïíà:þ-b:^þ{:>Ç::ˆ‡D:Æ>:Ú¸=:~DJ:Ð\O:‚¢É:Eª;Œ]4;wH:G:©-:Ža_:;:>:€'^:ü‚S:Ù¨¯:ìžj;Ù;Ÿé>:^Ê:ŸõK:2©R:1C:ô7!:Ði:mt:A—:ë§ä:ÙÀ:0íq:]Dx:	©T:&¿V:ëšN:äB:R‹E:¢ƒL:¾9‚:Æå:,;º:¥u:”ÆF:`=:ÍfF:l%?:Ÿ.b:¬L:zýM:µã~:"½=;‡Šò:Mi.:BäM:âí2:ŒS:L1;:¬I[:Ôm:‹€R:øž˜:6
+€;¾l!;mK:üïU:WK:fÉP:`ô::÷áN:d}J:"Óe:ü,^:v–ˆ:¯f¿:ŸÆn:ºòH:TÇ@:K‚9:"Ü+:ñ96:bB:f§f:ÄR:Ã¿:|A¬:þ÷K:?Ÿe:¨¨A:ÑœL:RC>:hx=:rx]:Ë[:Böh:ÿ-ñ:-Û¦:#·3:Æp:^_:‚ó:
+^:ó¸P:¯7k:d®L:,5‰:°MÅ:îÿ—:ž'E:0ñ_:&u:­-€:¿f:¬›‚:‹x=:0\G:@—:œ\2;oÁÖ:¥@:=*_:°%?:Srp:óÈe:ž‚e:Ú±>:¹::Ðµ:ú¥;à!;„J':uR`:¾Ú#:ßjZ:^T:¥DE:?ÕD:Õ L:9Ç:-Â—;‡ñ%;-VT:7EN:6;:¹L3:šcD:B:Ö° :ÚŠn:ç‰°:º=Š;iü;Ï‚:}ÅZ:ÁQ8:‡qM:gI<:Í¤@:KL:Ÿ‹g:Aí¨:mƒ;–™;ûjL: ©S:éa>:©<:*£.:5£D:0î@:†ª#:[4‘:OAq;v;Fä+9wÈi:½.:²û]:ÀZ:=Y:´¯<:Ðå:ŽãQ:\M;3ï;V\ :/DA:*÷::éW:Å÷‚:Ä¼l:´Ag:Vb:cy³:¾n9;#˜A;¬F—:Ÿªd:Ä<C:F:&}9:YRI:ïO:Ó^r:>–f:C¢Þ:¦³ú:(ÎS:rU:{A:ÐQ:	ê::{ÎD:L:3Å\:T:²#Ë:¡Í·:JªR:x,X:wn:t,c:u!S:s¬&:ÿ¨`:ˆ°X:³Áƒ:ñ7;c©:ûíR:XZy:5o‚::ß„:`ÒG:2‘9::áÇW:F•:Í E;ÃÌ:¨‘Y:‡d‹:M]:‘jŠ:ØÙ@:1´:É{_:4uL:šóœ:D†;¶Çø:ög>:Õ}:KúS:%vi:©q}:·¥‡:xÎ<:¦Û;:î7:ì¾‚;Éø:=„*:Òn`:ÞMM:ýèQ:eÜZ:ŽÐp:G›_:‹í,:ÿ¨˜:pK;<XÓ:ÉCS:l[:þ÷P:Ñš`:éB:±XN:nŒ%:oé.:CF:=ý:^ «:ÄWP:)ö5:€Ìf:V+P:ÿpG:pG:í-:ßE7:@A:Þ•:Ö÷Œ:+ô5:áT2:®ü@:þ?y:d_L: Žb:¬WS:Væ,:@ó:”‰~:	ƒ:2œˆ9Ë?:ô;.:”Þ©:Hh“:iiI:v:b~°: \?;°¥J;âfº:BJ5:ðÜd:	:j:ÔFQ:¿E:3nd:¯|:ÁÂ.;ä­;½“^:Æ::ÀŒ:×íh:úîF:™::¤‰B:J¾i:lˆ:mBÂ:­ã:I½N:(Ó„:*ïz:kÊN:Þ£J:+7H:JEM:æB:þq:¨üÂ:Êt!;Ú¤­:Î£:”-O:«<:ÊGX:û¿,:41T:^Êb:è¤m:‚ÐÅ:ó_h;>å:éSF:kýM:ƒDH:¨W:Îþ:Ñ]:¡:»“h:ˆT‘:öR;\`Å:ÝÝH:årc:ê~~:œà^:´W:ä¤a:…šp:-äN:KÍ—:¯R;d?»:w¿a:è4j:½$:¬Rl:g¯o:êïŒ:bì9¯ÇI:ƒ,:RŽò:^œ:=lQ:cŽY:ðæ%:Üt:&V:å/ˆ:§ôo:EO:'T[::Ðæi:"R:p9:Oð;:E­W:±L:M2:±—N:Pí\:uùl:ÞŸ:ü¦r:½D:ä D::ã[:ô @:O9L:ˆ²F:jD:$[?:tM:$@:?&N:œ¹M:šB8:h«a:›:*¤i:BžP:|LF:/2e:æ_á:~Šq;dq:z:eÊr:h¾U:Ë–:HDq:#(‚:í;~:ôÇJ:A;º/;³::ÁñŠ:´V:nXt:Hì‰:û„:è'w:-K;:hö9˜È:®í€:‚«Ð8h%:Ê€„:rTp:(Üg:–éP:]Sw:Ó«à:B0ã:÷;Å\!;?ˆÏ:¢Ž;«»;ë:þß·:ŸÏ:Fàø:
+û<;¼O$;ê­%;³6g;Ûm;0!7;‘EB;ÿÌ";Ø”;EI1;žî(;Ÿí-;Øâ:b˜ï:ô;eë;êqÐ:òs
+;S);?–*;Ç9;%à¨:©;Žä§:˜¦=:<£3;þÂ;:em^:Ê¶í:/2Ú:i8ô:E•È:  L:5;b‚;ùÐ:“×;ä²Á:òjÍ:"#ù:ŽÐÐ:ÈÃ°:Ü	Ï:;Â»:§
+ð9öÉO9,÷;5n>;D;fºB:Âab9úr%:Ùùt:o_†:š÷¹:"o:Xo:o
+¶:P;"ZÍ:[Ûd:nl‡:Dêk:»Z_:¡™>:¨W‰:ÉB:›Œ6:ù¼g:L1:¡M:Õ::ÉdJ:6ç]:¶…:äf:_¡:A]„:½˜7:?˜È:k)e;•$;sP„:è@:Ì™:®:aþŠ:Pæ]:ŠŒ:ç/‘:µ”:]ô=;Aý:;”:S#:€NŸ:ÜþÀ:iy:®CP:~†‘:à:G‘:`e;E?#;è\:7’:gVô:@)±:u©:à¤: Ëð:Øïé:ŸÊ;Ñ»<;\7;£;áÏ;	]/;‰þ:¶ú;Uõ-;wŽE;u];
+};^F;$);8û$;9¤m;Ð;‘Ÿ;ÆmE;ò¼&;Ÿ‚­;9¦!;Væ;¬¹1;¨¢;6'<;W³“;â'¤;¢#c;‚Ù¥:bÈ~:pÈ«;O»ƒ;z@+;);3;®9;Yã—;ŠÊ;\ï/;‡D:¨€.:‰Ù‹;À¤˜;a™{;î…b;
+;¤ÿˆ;`qQ;/;Jô
+;fŠ:ŠÏ‰:;”;ƒ;;H‡;§/¡;’;­ý;<²:ŒãB:_hƒ:¨p¡: ý‘:4Øû9 ¥9ñ*;mBz;h&;ãÛº9ÂŸ:²á:â;:Kº‚:ÜÄ´:º†=:Ñœ-:Òæ:"ÊÒ:œ!Š:‹X:(rd9UÀ†:|…:¶7•:Ý^';Ç™:Æv‰:é¥:’É:6Î:^^‰:»*˜:„ƒ:ƒaP:¼*[:£û:ºÅ:~ ½:Ÿ
+™:³3÷:ìù:Ò˜:ù8~::»:úŒ:ô<:uÅ:ßÜƒ:¦€:±nñ: ;¹
+M:>X:ƒ	;';ßÖæ:yBØ:Ýu1;Z—Ë:±ˆ¬:ô‚ú:®›	;ëÿ÷:ñá-;l:;Øo;Û¢`;3Ý*;H²?;,;|;Ä¼ ;°2;¦/;K;åêf;ðbˆ;8;5{¼:ÿ’U;¸|A;£Î6;»Ï:;94];dN;%Gk;Dà–;å¥G;¡8:¨&:÷.Š;6§[; /u;–ry;áñ;ÅpŠ;J‰›;…Ž™;‘|Ý:ôC1:µ„{:ùØ ;…l;ÞÁŠ;ŠL±;ÃVž;fø—;‚;Œ88; —:ëªn:nà@:N©o;WøV;\ze;Xü›;¼Å‰;£FB;Â ’:HöÈ:-?ë:¡±:bW:…Í:cdû:.I;Z„’;Ùµh;€û–:”ñÃ9Øš8::ûG:ê
+;Ö½º:ýPJ:ƒè‹:€+;#VS;ùß;“J:Ãx’::âx:’'8:>u;SO;Ohã:µq:žä:å˜£:
+4›:¤U‚:×éì:âñù:¼š&:D®:‚[:6Ø;oÍÐ:5uo:N¶Ì:å|µ:W:öœ;‹¹	;E¶,:Ö«:ú…:m¸^;Œk9:eha:.ÎÓ:@Ã¿¹QE‰¹¸!;ñÏ;qÕ;²=6;;ˆ´…;jô;a@;Gõs;ž>;"»	;wRI;”“$; "V;ï;kË;Å1q;—; Ì†;ÓR;ñ);Rl;‡f<;…?;Ú_y;.˜¿:ðP@:ŠAt;fK…;Î…‡;eˆ‡;;˜¡;¾ig;W}M;Æßb;Z­ü:æ:½U:™µ‰;:é—;êð”;?;"÷®;hîh;½åz;yN;KZg:æDV:Þq:Ël;cµ¡;]²;É´;Õà±;2
+q;k<x;]aA;Z©Â:Ë|:Ã€:†Ëc;h…;#á§;ª¸·;É\“;ÄB;¨Ó;äR/;)v>;âøÚ:9OŠ:/Â;l ,;}eG;½\e;~â!;¡êµ:+ÿ—:-‚:QØ:øÍ6;Ü~£:ºà–:àØ¶:·„É:}ÅÜ:1K±:î–:n‘:ÔÎ=:§‰:K:;ô.š:K;	ª:áÞÈ:xæ;=kÙ:²¢:7¹ù:»!;ÐÖ:µÕ:?¥:±ô:”ó:Ù²;!4,;N¥;u>M:y³;¯yv;vv);ß&;»áè:/$f;ålV;yÊq;:v;ÐUg;šÕ@;P™W;äAŽ;ï{;~¬;ü#A;Õ–;C;7W”;õZ¢;éè ;Å—; Îr;þ½†;†¿œ;"^;O¶ä:$uš;fT®;õ˜;rJ©;{Ð½;šà§;à´‚;L];ÉÓƒ;¹qÇ:Ê1:L”–;=›;yË†;ðÚ;¬b´;Âú–;Œ›;)¢;·­;‘½Ú9-Es:ì<§;Kª;Û‡Ÿ;î$ž;šˆ¹;?
+¢;­¶©;<E;ß‹œ:Ož0:~p:+š;|k·;muÅ;è¿;f=¿;Ç–;gš€;xÉn;Q;ƒñ]:)€`:ÐzR;6Û;	‚Š;¾‡;[Kv;†—1;1.;.;îv€;!ã;ïaZ:S5":&V]9¼¾:ª:‚:yÐ[:ü:Ë9N:Ò}R:Æ:;ÏXz;¯rn:mjT:ïÀ;:w"_:
+ 7:å‹—:¦Ía:Èb:–:TÜž:	Ú„;~üè:®‹ë:ƒeÎ:!@;”!!;]D;lú—: g±:Æz:úÑ»:õcÕ:À&;¡±Ú:ž9;˜Ø@;)Ã9;c";1:;{Þ;ä@Ã:„”:¶¾W;;‰‡;„|;=N;É0;šè7;‹Q;|Y^;[Û;yF; [;
+ÄŠ;¼)Š;¶	G;88Z;¬;äÑ;e<W;S[;¸1_;jƒ;^Þž;W¦\;Ë(;VÊs;f¿<;@¼;Š»ö:Ý7G;äåk;ò‹o;Zí—;\í;åž!;NÃN:D‘T;Äø:”-;Ø:sù%;ï—;Œj;/!;€=r;h¶;sB:P4£;R#;÷dñ:lP;œ<;qç›;j—;5;E˜i;ñ£.;ºk:Rß–;æ-;ia;“@~;ùJ†;b¡†;m|;Êˆ;;©’;9›P;Ñã:[aV;µ7_;Š£M;8¬T;%†Z;IvB;Éñ:#·Ò:Yz;áÀŒ;~ãÚ:)8î9 Ð;Þó;S‰;_¹:x‹°7D2:F³:+'Ô:Ÿ„;—ÄD;º}:‰F«: è:Ð”:¸O:Eö™:•Ós:M7:×qG:òM;v½;ŽI;™Š™:2{Í:4®œ:^dž:è™:VØ½:ªÝ:Ïç:™¸¾:Ü:;öõ;BZÞ:ß¢¤:¡†~:€ä¶:@Xõ:åK;H‹;Ýmy:j†:×S;˜
+·:7Š:ôÉd:ÜC6:n“:s;;¾Ý;a.Û:½Ù:Rh;)—l:Ô¹):Œv:Ÿú=:1£:åÿ:Ê–â:æø;ÔK;v;”9.;dS;84·:Í§¤:^ž:K0´:™~';ôž";;˜ç;€>;úKº:´ƒ';á²µ:“æ':¹°l:–·:—ýU;#¨3;H`;“ª<;;êòp:ï.†;øý:IÖè:6|i¹p’	;¯ÊŽ;'_ ;³o”;´ŠŒ;Ûáv;Ã¿«:Õs…;[jO;UÖB;¸×?;~R;ª8s;ät‚;ÿ¼—;ÞP¬;?Û¤;|3D;îÎJ;	Ý<;‰L*;	-;Ú<;¡A;Í;À“:ßix;]K®;²x;¤á«:;×é:+êá:õïá:£¾¹Œ:ñ(:ËÉ:(Œ;†¦;‰®¬:¹¦ð:sá:væ¿:ÖÛˆ:-{:ã×’:[l:jX=:½©T;E°¨;ˆ3„:N÷ë9º€²9¿¨‰9¦ªX9LÊ9<:ÑF0:Ì¸-:Êì²:k];M°:€ºJ:Æ!\:¡6á9…Ë*:”_:‚I :¨9ª:Cy‘9‡*¯:Žj;cÕ¯:ÀN¯:ì˜›:A§:dx:ª­':0e¡:ÁF';ÆTŠ:ü :)-;Í:·°­:œy:07³7Xš:2H…:ŽbS:è;‚Q;*@ñ:xS,;¸ý;É:êˆ :ˆr.¹¥÷¦:Ï_;Û…þ:ïUÄ:d;;žR%;.y+;/À°:s¸H9nÓ:Ü®!:·>Æ¸êJÀ:—È¹RiT;#M;B;
+°A;Ø2‹;+Õm;k:w;†g;¸\o;ZÒr;[’‡;{—;ØU¡;È¬‰;D¼s;ø;Êm;ÍT;2rS;ewd;ˆ	`; {t;ß›;—+ª;»—¢;Y–;kb;!;ð:\í:¶¢;”_%;LJ ;œÂµ:R¼‡;£¦’;€„’;M;…:Ó*˜:2qƒ:““>:Û:öŠ„:eœW:Äœ·Ì';C“;pd;‘ü:v¢:‹@“:ûã„:¦Ìj:ÎóA:+—r:ª­]:ç¨:C
+m;øÉŽ;8(:RÐ:Kœ‚8k]¸µv`9@½¸„§9è—“¶0ƒ¹Ð\o:=ØÍ:þ¬<:¥ 8:âs¦9”19¦u:·(:œ:ÙK>:R¾³:~æ8*hº„Š:ï1:1
+L:"–	:{—:£Èz:bæ:á¶ÿ:1Æ™:»¸1;ãõ;wÓ:¸Z‰:©¾:6@¥:ŸÌŠ:üjt:}ë;Ž0;ëæ;ñLP;¼ ;{©:L´¹r\º8i	;ÖÌÛ¹ž…:Æö’8ú[ñ:’2;Â+@;L?;­Ò;6ŽK;Rù^;Ï¤c;P•X;¸þ6;+>c;=5;'H;¡fL;²üX;,¡;(Bž;=ÊŠ;Ø\Œ;›ˆ‡;]vf;õ1Œ;ëîŽ;¢ä;™Aƒ;f;Åw;h}S;û],;ˆÑ(;øÈ4;a¤9;šR;DŠ;Í›;¹+…;Ãrð:¡oß:·±¯:ê–Œ:I”Ž:Aûª:*ï:'½Â:Kr;i‘;ÔŒ;q;ë :Îä:íª#:#=:¢RD:{tR:§`ë9Á8Þ9MëB;¦‹;¬Ù=;'?:å4M:<T:íS*:qÉC:Pti:¢ž:õmD:ÌØÀ:Î—Z;B–+;âg–:À¡q:­W5:pa3:	:Øo(:ô8=:b±:C8:Mð–:5;±:H/Ñ9ïsÇ9ªo 9(<º
+iP8yCºl£Q9í¼9E:nÆ¯:37';…]:å99@EÊ¹³ÿR:”:Sˆ¥¹ˆŠ—:
+¹³:Š»†:ÏF;øo6;’Kƒ:ø“Û9l:,W;†´:Üæ¹Yé|:üä¢:/>å:;ÞH;*OA;Üí´9nÎD:p#;E@;P;vI;áèÝ:,×:è±;15;Í”>;b^v;ã@€;¹Óc;Y,k;D-;˜h…;]lˆ;à‡I;Vkì:hÎÄ:ÿ:;#Î˜;qîŠ;PJG;ìµ];’î[;/œM;ÕT|;æùŒ;`;;
+p±:×¸ï:j³c;§¨;Pyî:±Që:'¤ÿ: ^;Ï5;J«‘;š‹‰;Uø,;?˜•:éM:.‹
+º$–A:ïk›9¼9Û‘e:‘â9‘*;g¥;ãŽ;’ã;ÞBh:Uo:[Q:oÚP:±u2:üb:øI\:È*¨:’r;¢ž;.U’;’^*:Êj):àŸ5:À3:R†;:«"8:Õ h:M¯-:HúÐ:4Ù€;v¨; ¹9Ž¹:ÚÝT:ó1„:Z¢;:Û‚ò9OU:]ÕD:}h<:˜Êœ:Ð?;ï9å9w4ñ9.ý£:?Z:ó÷Â9Â­>9XH:ìG:<L:µ&;ÿ©)·v"8òÄÏ:„;•Eì:L×Ž:žü9š~}:AE˜:hþÎ:™ï$;º+|²:øÅ;tÏ;½¶";×¦;àžÄ:i9­¼š:ø®:'H;tc;Œo.;¨;šL*;Û@;@Y;±\@;¾òÃ:þy:]òK9Š/¤:Eñp;6®];7Û ;È	>;%6;sQ;ªü{;ÆÌI;o;;9<|\9¸ ´:‘Ë;º;;€Õò:2#;Z´ò:è;÷t;ã;Ù°-;q¤:g¡:º?';ÜEJ:öñ–:Þ[j:dgœ9+l:ý•(;ža‹;^V‡;ß:õév:zœ:6¾:G^:—:R:Ùx<:Å9²9]¾˜:ýÂb;>„’;X[j;¹€U:Ö:ûð]:å£F:ÚÍA:Þ *:‚b6:´Ä2:;€;o •;.@¡;`€F;ù	:‹€@:rg5:Ô4:”Ð':¥G:¼‚:¬‘ž:ÜÞo;Ÿ‘¨;í8‹;[3"8˜Ÿû8IO—9uv³9$Ž:Ûc_9çÎ½83­í9Ðû9¼ó=:R©:VfŠ9ÍB9í:Œ(ˆ:}s›:Ñû[:ø¦€9-â:Ñê9,!:»*¡:>õ:Ç,:u˜:nî®:ª‹Ì:e‚¿:QôI:3ýß9eŽm9%,·9„;:¶:÷ÆÓ:ã“:{GÊ:Taû:üGü:“°:°·‡%9»3790™§¹´$;³
+;Ù$
+:Wš;·b;g;øV;…sF:aj¹9f~è9&÷*:©/;±ü;Öˆ…¹Àß';8T;‹‹/;Øû,;ØÙþ:Š¤%:€·%:rÅ93D;@É;ôÊÒ:þ/;a7;ÅÆ';]ÃH;×<L;mjN:Ï9Ö9#b8ŽU;üzû:nE;l;ÓðÆ:oVø:ÛËX;ú;^ÿ:-G:BÁ9Ÿ–+;D”:…Üª:oy©:bg	:zêy:Ýæ4;•€;-¾j;šª‚:½¤¹].ò:R:‘Œ*:ç:î-:gó9¾¸Ã:°_ˆ;9˜;¯8;)$:™û:ëã:Ñº4:àdR:“'::².:TãR:©œQ;(ö¡;ˆ0‡;s½Õ:ˆ §9ÝÃÐ¸ee¢8^°¬9óäJ8=:G¹Ü:M›:®¢9´QŒ9u¸":¿ñ93/8’aê8xAá9ûz†9¢¤:É·À:ÉMˆ:õÀž9ñcñ8sÉ7ÿ9Ñ9á-ë9T½M:×ØT:Æéí9R·Ù9„0“:î5Y:µ%|9æ»€9²£&9%º9SÚx:ò¿”:•:wb:/: Z<:óªc:ÆR–7ŒÌµ9n ÿ9ë˜?:#`©:¸Ã :NN²:‰>®:€nŸ:½òK:_-U:YÔ„¸GF9ù–9¿»õ:K»Õ:yþµ:y;x;2˜;!í¸:(':5ÂÅ9–9ú:q3;÷üë:§á:A	:;>¯=;  3;êf;Z£:þƒ:'í9?„7:s?;C²¶:Š¬;›f; ªE;ƒÓI;óßQ;ˆé;0#:aó3:3÷Ù9"èZ;`b ;ÉŽ7;xg;e&=;˜™L;ºšp;õ\;(Þp9,ç:B(Â8”/m;£?;‡ƒ.;Ð6&;"B;(5;.Dy;è‹;éûN;#t¢¹ân!:~9/;Šê¬:D™:PVd:ë`:WÂ:üV;‘¯”;,ý˜;=¸;;Î‹Ÿ¹´Ã:¦Î|8í'9ÏÛ9L°	ºQ”:,iº:õP:~_:®5¦¹éü9:ô"9Y¹9£jý8ò‹9Íý­¹
+Xµ9VeÁ:ä?m:ò#:‹õL¸ùEË9{†F¹'u³8\ò‚9}	â9“5¹þ¡59‹ÛÅ:^†:?m):"1:¹õ¤9gt»¸%Y9/„:àtŽ:â!ˆ9d!9¯”:|ö¦:l<ä9çi:¾vs: m…µN-d:EÆ;ãþÿ:ë¾b:ïn^9u‹:ü½ :îlà9æô9©ã¨:ö…¼9‘ôî:yÖ';m1;h;
+Í9µè9ê›t:šÛ::›f9{Ÿ;:!:{L$;ú’/;iL;G;ã¡ã:ôò9¾‹D:Ø.:u}9‚9µQ;Öˆ9;:gE;Ù.s;jJf; áD;Â«:kþÜ¹€Ý9‚9&IŒ9ÅT^;lèH;êb;|,ˆ;Zg€;©Îu;<x.;%Vk:`éº?q­9ç¿x9ÞŸ‰;ZB_;a`;êJŠ;C…;3‡;wu;qž;¸Òh:^þ:Oâ9U.“;b„;pì;Ø;ü`;2š…;‚æ;ÕTN;Í“¦:FáŸ9e¨%:”hZ9^$9Oì9]0Ò8ÍO­9OD	9*YŠ:Âåm:•9,×¸ãv¸Q‘ž9À·9Òä¸<ôÅ¸š‰t8€}+9j^‚:º^Š:êˆI9Èàx8
+g¸Ô‹9=5Ý7²›‹·•â9õ9Øuº9Yè;:
+êl:´ï9û˜¶9-ƒ•9e9ºU8;þ¥9‡*ì9;´è9*bƒ9´V":ó…:¹“D:ùG:¹±ö9=7É8ÏuZ9?€:æä¹(m%¹–¹È<ç9Í~}:X9<:õA9¥‰S9jÞÁ7Þ™9—y]:Aˆ:cež9ò¹ù5:t…z:$¯9‘?1¸’¨ç7zkæ8Åß…:2ëâ:À›;éº:mS:¶3d:-›¾:-:Úø9÷@9/Ýñ9ï;ínF;Ú\;A(2; V:3åW:Å“:á=:>Y½9=q¡9#ó:ÅE;f;¼ù‰;Îø‚;«*";!Bb:öÜw9¯ÀÅ9?ß`:¥9rP;hîn;Þ¦D;î*;ýœ;†ô{; ¦“:+ìÕ¸N˜ºøN/:7>ª:r„;~;að;;! †;ñçž;á¤˜;d¬B; «¯:Ó¹©_p9l«:€úÝ8|Xv9±ñA:[6:„Ô©:P‹:Ý]ð:}¢:Ýß\¸G×*:%à:
+98ÁÎ97:]F¹9þóˆ:=ÎY:và:Š3•:@Ô“9æœ:ƒ³È:,¯ó¹4öÔ9Ýx’9X¸Ò9Ko€:`C¶9jA!:ãik:Âg5:Vª:#`':ý.¹ï”¯9¢6º9ÛîŠ9ïÁ-:ÖŠ‹9Âa¨9Bó9!ß3:X?€:–/ò¹”¶–¸ƒº9(ãN¸‡Òµ®òF:i9Õ š¸|4#:ÑV“:ùP€:Z§9^8S@Ö9k\9ë|49ok: |‚9°øO9’ˆ:%€Ï:Zq‰:ç.m:Þ¹9¿Ó9˜B:¹I:½á9úæp8aøÃ9ó±:îÇ¢:·áj:•êT:¦:’’+:8ß:ò*Õ:¶úU:*¯ºŒ#G:açÅ:Ž“L:œ*:Ãœ¸Œ* :Š´ã: p#;X‡A;äC;˜™Ý9t:•§Â:êØ:ìÍ:dÃ3:±ãS:FÀ6;WíT;ú*ƒ;¼F[;öƒÇ:
+]š:úy:Ê6Q9·y¥: §4;¦†;á;ù„;'‹l;ÔÊƒ;”„`;/J¹Ä‘›:ïZd9&:ÏÑ;pJÑ:*Z‰:Ã>†:À·‹:p#!:;ÄA9ÞW:Þc_:Xª4:te‹:0þë:>Ìd:õá_:­T:ÒK:J°:ú«š9Œ|:Ày:|wr:kïñ:Pù;<’«9•Ð':Â£l9!,:jè:mñÀ¹išÝ9×2‘:@:¾óò:˜n;p(9€c0¹©è9;O:­¸”8émþ·ç¬9¥˜ˆ: ”:Ë‚Ö:à¼Ú:‹û$¸‚§¸Y·:;:é—…9Ý˜9S‚ä9‘mq:îÃ”:¬’Ô:Öé‹:úL2¸ïì&9Œ½º9wQ9; á9
+Ôë9ëD:[„:AH­:OYã:#ç¬:ù87:Å–Q9ù°3º?Þ¹åO¬¹ß(:ä†:_¤:œÚ¶:CBÀ:¾Vä:Ï²:Ð
+v9}v¹©qA¹™ºrt|:æÃ:åÒ­:Ó½:9Q.:má:Å¹Å:}”P:Œã»:fýí:X:Fâ²:>?®:»_:•À:’-:?T:—­:U·–:Jþ:¤aö:„|ò:t»:‡p:*u:%RÆ:ÏÚ;BÇç:"Z‡:°ƒú:8Å;×l;{E;³£‘:/ƒ(:‡o:c]”:€9ã:GÖ½:5w
+;ÓõÖ:¶¶Œ9éWJ:ÒE¢9dŠ¹¼ß†:#Ñœ:B¾:—A¸)]¡:Î:Ð:ª1¦9Ä¿¥94H9vÒÚ8Í_f¹;]":‰®:úU¿:ä"¡:*ò«:Ür8°t:‰fÓ¸{ˆï9’°¿9G‘r9(ÜÑ9"¥…:^í:[6;È¤¤:üÂ8:ÊpÑ8#ðÝ9Ö¢½9þ;9¿ –¹Û':ÏP:Yâ;s>;ƒCâ:RFO:ã.º 2ä¸¥Œ)9~P:d:‰»†:ëÒ|:A;ð:Sö;\ã;Að2:"d’¹K“|6ü8C:®9nÚ?:'™‹:˜Ð«:†ø¶:Ž¦Ë:+Q;œÏ³:B¹Ž:º‡:`a‹:¦’`:	BŒ:&ÍÇ:Â[¹:»™:1 :ùk;Þøÿ:–hì:[ö²:Ýã>:úÙ¢: :Á:Ëí:Oëã:óë§:wi±:e;µ[ ;Ü#Ú:(Ô—:^s:Û¥­:Ð®ã:N«ö:yl;<†â:¾ø²:>«È:¬:î¥:æÓ:
+¹:ŸÁª:ºdë:yV;ý²û:³§:îC‡:z¸Ñ9˜Aˆ:×9{Jo:\ç{:ig¡:‡¨:JÌ:³b„:M:·ô¬:YÑ2:
