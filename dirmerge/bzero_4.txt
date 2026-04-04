@@ -1,0 +1,5 @@
+# Manually-created "direction table" that contains 4 b=0 volumes
+0.0 0.0 0.0
+0.0 0.0 0.0
+0.0 0.0 0.0
+0.0 0.0 0.0
