@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+import pathlib
 import sys
-with open('tmpoutfwe_1mpvalue.csv', 'r') as f:
+with open(pathlib.Path(sys.argv[1], 'fwe_1mpvalue.csv'), 'r') as f:
   for line in f.read().splitlines():
     line = line.split('#')[0]
     if line:

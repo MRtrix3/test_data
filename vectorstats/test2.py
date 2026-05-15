@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 # Script for testing element-wise design matrix columns
+import pathlib
 import sys
 FWE = [ ]
-for filepath in [ 'tmpoutfwe_1mpvalue_t1.csv', 'tmpoutfwe_1mpvalue_t2.csv', 'tmpoutfwe_1mpvalue_t3.csv', 'tmpoutfwe_1mpvalue_t4.csv' ]:
-  with open(filepath, 'r') as f:
+for filename in [ 'fwe_1mpvalue_t1.csv', 'fwe_1mpvalue_t2.csv', 'fwe_1mpvalue_t3.csv', 'fwe_1mpvalue_t4.csv' ]:
+  with open(pathlib.Path(sys.argv[1], filename), 'r') as f:
     for line in f.read().splitlines():
       line = line.split('#')[0]
       if line:
