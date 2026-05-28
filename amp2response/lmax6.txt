@@ -1,0 +1,4 @@
+# Shells: 0,2999
+# command_history: amp2response dwi.mif sh2response/sf.mif sh2response/ev.mif amp2response/lmax6.txt -lmax '0,6'  (version=3.0.8-29-ga4077b82-dirty)
+629.043871686368 0 0 0
+136.651266829107 -36.9562508834742 12.5807527357692 -5.01199106094489

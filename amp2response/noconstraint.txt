@@ -1,0 +1,4 @@
+# Shells: 0,2999
+# command_history: amp2response dwi.mif sh2response/sf.mif sh2response/ev.mif amp2response/noconstraint.txt -noconstraint  (version=3.0.8-29-ga4077b82-dirty)
+629.043871686368 0 0 0 0 0
+136.663285560706 -36.9367950367063 12.6170089535379 -4.96804692398233 3.17575836531613 2.41053866198573

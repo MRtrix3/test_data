@@ -1,0 +1,4 @@
+# Shells: 0,2999
+# command_history: amp2response dwi.mif sh2response/sf.mif sh2response/ev.mif amp2response/default.txt  (version=3.0.8-29-ga4077b82-dirty)
+629.043871686368 0 0 0 0 0
+136.658525890969 -37.0178735632962 12.3476015733779 -5.63162332146882 1.93945055316507 0.0667712088925271
